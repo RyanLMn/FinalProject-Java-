@@ -1,0 +1,54 @@
+import java.util.Random;
+public class event {
+
+
+	
+	private boolean ambulance;
+	private boolean firetruck; 
+	private boolean police; 
+	private boolean emergency; 
+	private int dispatch;
+	private boolean end;
+
+	private int location;
+
+	
+	public event()
+	{
+		event=new event;
+		emergency=true;
+	}
+
+	public void situation()
+	{
+	
+	Random rand = new Random();
+	//50 is max 1 is min
+	location = rand.nextInt(26) + 1;
+
+	dispatch=rand.nextInt(8)+1;
+	if(dispatch==1)
+	ambulance=true;
+	else if(dispatch==2)
+	firetruck=true;
+	else if(dispatch==3)
+	police=true;
+	else if(dispatch==4)
+	ambulance=true;
+	firetruck=true;
+	else if(dispatch==5)
+	firetruck=true;
+	police=true;
+	else if(dispatch==6)
+	police=true;
+	ambulance=true;
+	else if(dispatch==7)
+	police=true;
+	ambulance=true;
+	firetruck=true;
+
+
+
+
+
+}
