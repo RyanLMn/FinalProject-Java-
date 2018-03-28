@@ -1,0 +1,14 @@
+public class firetruck extends dispatch{
+
+	
+	public firetruck()
+	{
+		
+		homelocation=1;
+		size=2;
+
+		if(event.emergency=true && event.fire=true)
+		active=true;
+
+	}
+}
