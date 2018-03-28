@@ -1,0 +1,14 @@
+
+public class police extends dispatch{
+
+	
+	
+	public police()
+	{
+	size=1;
+	homelocation=3;
+	if(event.emergency==true && event.police==true)
+
+	active=true;
+	}
+}
