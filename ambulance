@@ -1,0 +1,13 @@
+public class ambulance extends dispatch{
+	
+	
+	public ambulance()
+	{
+		size=1;
+		homelocation=2;
+		if(event.emergency==true && event.ambulance==true)
+		active=true;
+
+	}
+
+}
