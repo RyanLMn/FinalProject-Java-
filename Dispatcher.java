@@ -2,7 +2,7 @@ package EMSSystem;
 
 /**
  * 
- * @author Ryan Morgan
+ * @author William Cirucci
  *
  */
 public class Dispatcher {
@@ -39,6 +39,16 @@ public class Dispatcher {
 		else if(location>homelocation)
 		location--;
 
-
+	
 	}
+		public int getLocation()
+	{
+		return location;
+	}
+	
+	public void setLocation()
+	{
+		location=0;
+	}
+	
 }
