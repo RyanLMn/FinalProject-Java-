@@ -6,8 +6,8 @@ public class Hospital extends Building{
 	private int number; // number of patients at hospital
 	
 	
-	public Hospital(Location l, int number) {
+	public Hospital(Location l) {
 		super(l);
-		this.number = number;
+		//this.number = number;
 	}
 }

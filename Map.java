@@ -3,13 +3,14 @@ package EMSSystem;
 import java.util.ArrayList;
 
 public class Map {
-	private static ArrayList<Building> buildings;
+	private static ArrayList<ArrayList<Building>> buildings;
 	private static ArrayList<House> house;
 	private static ArrayList<Roads> road;
-	private static EMT emt;
-	private static FireDept fireDept;
-	private static Hospital hospital;
-	private static Police police;
+	private static EMT e;
+	private static FireDept f;
+	private static Police p;
+	private static Hospital h;
+	private static boolean emt = false, fire = false, police = false, hospital = false;
 	private final int numberOfCars = 6;
 	
 	public Map() {
@@ -20,45 +21,71 @@ public class Map {
 	
 	public void build() {
 		int number = 1;
+		
 		for (int x=0; x < 25; x++) {
+			buildings.add(new ArrayList<Building>());
 			for (int y=0; y < 25; y++) {
-				//int rng = Randomizer.getRgen(10);
 				Location l = new Location (x,y);
 				
 				if (x%2==0 && y%2==0) {
 					House h = new House (l);
-					buildings.add(h);
-					
+					buildings.get(x).add(h);
 				} else {
 					Roads r = new Roads(l, numberOfCars);
-					buildings.add(r);
+					buildings.get(x).add(r);
 				}
 				
 			}
 		}
+		int rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
+		int rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
+		Location l = new Location (rngx,rngy);
+		e= new EMT(l, 5);
+		buildings.get(rngx).set(rngy, e);
+		
+		rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
+		rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
+		l = new Location (rngx,rngy);
+		f= new FireDept(l, 3);
+		buildings.get(rngx).set(rngy, f);
+		
+		rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
+		rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
+		l = new Location (rngx,rngy);
+		p= new Police(l, 7);
+		buildings.get(rngx).set(rngy, p);
+		
+		rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
+		rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
+		l = new Location (rngx,rngy);
+		h= new Hospital(l);
+		buildings.get(rngx).set(rngy, h);
+		
 	}
 	
 	public void display() {
-		int x;
-		int y;
-		int count = 1;
-		for (Building B: buildings) {
-			x = B.getLocation().getRow();
-			y = B.getLocation().getColumn();
-			if (B instanceof House) {
-				System.out.print(" H");
-			} else if (B instanceof Roads) {
-				System.out.print(" R");
+		for (int x=0; x < buildings.size(); x++) {
+			for (int y=0; y < buildings.get(x).size(); y++) {
+				Building B = buildings.get(x).get(y);
+				if (B instanceof House) {
+					System.out.print(" B");
+				} else if (B instanceof Roads) {
+					System.out.print(" R");
+				} else if (B instanceof EMT) {
+					System.out.print(" E");
+				} else if (B instanceof FireDept) {
+					System.out.print(" F");
+				} else if (B instanceof Hospital) {
+					System.out.print(" H");
+				} else if (B instanceof Police) {
+					System.out.print(" P");
+				}
 			}
-			if (count == 25){
-				System.out.print("\n");
-				count = 1;
-			}
-			count++;
+			System.out.print("\n");
 		}
 	}
 	
-	public static ArrayList<Building> getBuilding(){
+	public static ArrayList<ArrayList<Building>> getBuilding(){
 		return buildings;
 	}
 	
@@ -68,5 +95,21 @@ public class Map {
 	
 	public static ArrayList<Roads> getRoad(){
 		return road;
+	}
+	
+	public Location getETMLoc() {
+		return e.getLocation();
+	}
+	
+	public Location getFireLoc() {
+		return f.getLocation();
+	}
+	
+	public Location getPoliceLoc() {
+		return p.getLocation();
+	}
+	
+	public Location getHospitalLoc() {
+		return h.getLocation();
 	}
 }
