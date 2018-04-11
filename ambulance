@@ -1,13 +1,60 @@
 public class ambulance extends dispatch{
+private boolean rescue;
 	
-	
+
 	public ambulance()
 	{
 		size=1;
 		homelocation=2;
 		if(event.emergency==true && event.ambulance==true)
 		active=true;
+		ambulance=true;
+		rescue=false;
+		
+		
 
+
+if (destination==true)
+{
+destination==false;
+rescue==true;
+}
+while (rescue==true)
 	}
-
+if(currentlocationX<Hospital.location)
+			{
+				if(Map.getBuilding().get(currentlocationX+1).get(currentlocationY) instanceof Road)
+				{
+					currentlocationX=currentlocationX+1;
+				}
+				else if(locationX>Hospital.location)
+				{
+					if(Map.getBuilding().get(currentlocationX-1).get(currentlocationY) instanceof Road)
+					{
+					
+						currentlocationX=currentlocationX-1;
+						}
+				if(currentlocationY<Hospital.location)
+				{
+						if(Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Road)
+				{
+							currentlocationY=currentlocationY+1;
+				}
+				
+						else if(currentlocationY>Hospital.location)
+							if(Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Road)
+					{
+								currentlocationY=currentlocationY-1;
+					}
+				
+		
+				if((currentlocationY==Hospital.location || currentlocationY==Hospital.location-1 || currentlocationY==Hospital.location+1) && (currentlocationX==Hospital.location || currentlocationX==Hospital.location-1 || currentlocationX==Hospital.location+1))
+			{
+			destination=true;
+			}
+			if(destination=true)
+			{
+		rescue=false;
+			}
+				}}}}}	
 }
