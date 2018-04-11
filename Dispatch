@@ -9,6 +9,7 @@ public class Dispatch {
 	protected boolean homedestination;
 	protected int currentlocationX;
 	protected int currentlocationY;
+	protected boolean ambulance;
 	
 	public Dispatch()
 	{
@@ -18,7 +19,7 @@ public class Dispatch {
 		currentlocationY=homelocationY;
 		homelocationX=0;
 		homelocationY=0;
-		
+		ambulance=false;
 	
 	
 		//move to event
@@ -53,16 +54,24 @@ public class Dispatch {
 					{
 								currentlocationY=currentlocationY-1;
 					}
-				}}}}}
+				
 		
 				if((currentlocationY==event.locationY || currentlocationY==event.locationY-1 || currentlocationY==event.locationY+1) && (currentlocationX==event.locationX || currentlocationX==event.locationX-1 || currentlocationX==event.locationX+1))
+			{
 			destination=true;
-					
+			}
+			if(destination=true && ambulance != true)
+			{
+			active=false;
+			}
+				}}}}}	
 					
 					
 					//return home
-				if (homedestination=false)
+				if (active false)
 				{
+				active=false;
+				}
 				while(active=false)
 				{	if(currentlocationX<homelocationX)
 					{
