@@ -1,14 +1,21 @@
+package EMSSystem;
 
-public class police extends dispatch{
+
+
+public class police extends Dispatch{
 
 	
 	
 	public police()
 	{
 	size=1;
-	homelocation=3;
-	if(event.emergency==true && event.police==true)
+	homelocationX=0;
+	homelocationY=0;
+
 
 	active=true;
-	}
+	
+	
+
+}
 }
