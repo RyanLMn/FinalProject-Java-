@@ -1,13 +1,17 @@
-public class firetruck extends dispatch{
+package EMSSystem;
+
+public class firetruck extends Dispatch{
 
 	
 	public firetruck()
 	{
 		
-		homelocation=1;
+		homelocationX=1;
+	
+		homelocationY=1;
 		size=2;
 
-		if(event.emergency=true && event.fire=true)
+		
 		active=true;
 
 	}
