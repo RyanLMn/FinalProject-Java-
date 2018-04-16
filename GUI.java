@@ -43,4 +43,8 @@ public class GUI {
 		frame.pack();
 		frame.setVisible(true);
 	}
+	
+	public void update() {
+		frame.repaint();
+	}
 }

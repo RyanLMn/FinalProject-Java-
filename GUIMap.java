@@ -54,8 +54,18 @@ public class GUIMap extends JPanel{
 				}
 			}
 		}
+		
+		for (int x=0; x < Map.getEvent().size() ; x++) {
+			int X = Map.getEvent().get(x).getx();
+			int Y = Map.getEvent().get(x).gety();
+			X *= m;
+			Y *= m;
+			
+			g.setColor(Color.MAGENTA);
+			g.fillRect(X, Y, m, m);
+		}
 	}
-
+	
 	public Dimension setPreferredSize(int i, int j) {
 		// TODO Auto-generated method stub
 		return new Dimension(w,h);

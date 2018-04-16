@@ -19,6 +19,8 @@ public class Map {
 	private static boolean emt = false, fire = false, police = false, hospital = false;
 	private final int numberOfCars = 6;
 	
+	private static ArrayList<Event> events = new ArrayList<>();
+	
 	public Map() {
 		buildings = new ArrayList<>();
 		house = new ArrayList<>();
@@ -129,5 +131,13 @@ public class Map {
 	
 	public Location getHospitalLoc() {
 		return h.getLocation();
+	}
+	
+	public void setEvent(Event event) {
+		events.add(event);
+	}
+	
+	public static ArrayList<Event> getEvent() {
+		return events;
 	}
 }
