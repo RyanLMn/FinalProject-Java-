@@ -1,5 +1,11 @@
 package EMSSystem;
 
+/**
+ * 
+ * @author Ryan Morgan
+ *
+ */
+
 public class EMT extends Building {
 //array of ambulances
 	private int number; // number of ambulances at station

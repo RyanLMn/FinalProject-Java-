@@ -1,16 +1,23 @@
 package EMSSystem;
 
+/**
+ * 
+ * @author Ryan Morgan
+ *
+ */
+
 public class Driver {
 	
 	public static void main(String[] args){
 		Map map;
 		GUI gui;
+		Event event;
 		
 		map  = new Map();
-		map.build();
 		
 		gui = new GUI();
-		//map.display();
 		
+		event = new Event();
+		//make events.
 	}
 }

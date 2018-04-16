@@ -2,6 +2,12 @@ package EMSSystem;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author Ryan Morgan
+ *
+ */
+
 public class Map {
 	private static ArrayList<ArrayList<Building>> buildings;
 	private static ArrayList<House> house;
@@ -17,6 +23,8 @@ public class Map {
 		buildings = new ArrayList<>();
 		house = new ArrayList<>();
 		road = new ArrayList<>();
+		
+		build();
 	}
 	
 	public void build() {
@@ -37,26 +45,36 @@ public class Map {
 				
 			}
 		}
-		int rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
-		int rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
+		int rngx;
+		int rngy;
+		do {
+			rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
+			rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
+		} while (!(buildings.get(rngx).get(rngy) instanceof House));
 		Location l = new Location (rngx,rngy);
 		e= new EMT(l, 5);
 		buildings.get(rngx).set(rngy, e);
 		
-		rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
-		rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
+		do {
+			rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
+			rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
+		} while (!(buildings.get(rngx).get(rngy) instanceof House));
 		l = new Location (rngx,rngy);
 		f= new FireDept(l, 3);
 		buildings.get(rngx).set(rngy, f);
 		
-		rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
-		rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
+		do {
+			rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
+			rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
+		} while (!(buildings.get(rngx).get(rngy) instanceof House));
 		l = new Location (rngx,rngy);
 		p= new Police(l, 7);
 		buildings.get(rngx).set(rngy, p);
 		
-		rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
-		rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
+		do {
+			rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
+			rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
+		} while (!(buildings.get(rngx).get(rngy) instanceof House));
 		l = new Location (rngx,rngy);
 		h= new Hospital(l);
 		buildings.get(rngx).set(rngy, h);

@@ -4,6 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
+/**
+ * 
+ * @author Ryan Morgan
+ *
+ */
+
 public class GUIMap extends JPanel{
 	private int w;
 	private int h;

@@ -1,5 +1,11 @@
 package EMSSystem;
 
+/**
+ * 
+ * @author Ryan Morgan
+ *
+ */
+
 public class Police extends Building{
 //array of police cars
 	

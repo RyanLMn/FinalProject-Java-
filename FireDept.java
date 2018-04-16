@@ -1,5 +1,11 @@
 package EMSSystem;
 
+/**
+ * 
+ * @author Ryan Morgan
+ *
+ */
+
 public class FireDept extends Building {
 // array of firetrucks
 	

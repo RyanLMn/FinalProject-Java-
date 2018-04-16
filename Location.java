@@ -1,5 +1,11 @@
 package EMSSystem;
 
+/**
+ * 
+ * @author Ryan Morgan
+ *
+ */
+
 public class Location {
 	int row, col;
 	

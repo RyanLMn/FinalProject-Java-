@@ -5,6 +5,11 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+/**
+ * 
+ * @author Ryan Morgan
+ *
+ */
 
 public class GUI {
 	private static JFrame frame;

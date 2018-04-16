@@ -1,5 +1,11 @@
 package EMSSystem;
 
+/**
+ * 
+ * @author Ryan Morgan
+ *
+ */
+
 public class Hospital extends Building{
 // arraylist of injured, check for ambs
 	
