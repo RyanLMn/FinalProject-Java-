@@ -1,60 +1,65 @@
+package EMSSystem;
 public class ambulance extends Dispatch{
 private boolean rescue;
-	
+    private int HLocationX;
+    private int HLocationY;
 
-	public ambulance()
-	{
-		size=1;
-		homelocation=2;
-		if(event.emergency==true && event.ambulance==true)
-		active=true;
-		ambulance=true;
-		rescue=false;
-		
-		
+    public ambulance()
+    {
+        size=1;
+        homelocationX=0;
+        homelocationY=0;
+        
+        
+        ambulance=true;
+        rescue=false;
+        HLocationX=0;
+        HLocationY=0;
+        
+        
+            active=true;
+        
 
-
-if (destination==true)
-{
-destination==false;
-rescue==true;
-}
-while (rescue==true)
-	}
-if(currentlocationX<Hospital.location)
-			{
-				if(Map.getBuilding().get(currentlocationX+1).get(currentlocationY) instanceof Road)
-				{
-					currentlocationX=currentlocationX+1;
-				}
-				else if(locationX>Hospital.location)
-				{
-					if(Map.getBuilding().get(currentlocationX-1).get(currentlocationY) instanceof Road)
-					{
-					
-						currentlocationX=currentlocationX-1;
-						}
-				if(currentlocationY<Hospital.location)
-				{
-						if(Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Road)
-				{
-							currentlocationY=currentlocationY+1;
-				}
-				
-						else if(currentlocationY>Hospital.location)
-							if(Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Road)
-					{
-								currentlocationY=currentlocationY-1;
-					}
-				
-		
-				if((currentlocationY==Hospital.location || currentlocationY==Hospital.location-1 || currentlocationY==Hospital.location+1) && (currentlocationX==Hospital.location || currentlocationX==Hospital.location-1 || currentlocationX==Hospital.location+1))
-			{
-			destination=true;
-			}
-			if(destination=true)
-			{
-		rescue=false;
-			}
-				}}}}}	
-}
+        if (destination==true)
+        {
+        destination=false;
+        rescue=true;
+        }
+        while (rescue==true)
+        
+            if(currentlocationX < HLocationX)
+                {
+                if(Map.getBuilding().get(currentlocationX+1).get(currentlocationY) instanceof Roads)
+                {
+                    currentlocationX=currentlocationX+1;
+                }
+                else if(currentlocationX>HLocationX)
+                {
+                    if(Map.getBuilding().get(currentlocationX-1).get(currentlocationY) instanceof Roads)
+                    {
+                    
+                        currentlocationX=currentlocationX-1;
+                        }
+                if(currentlocationY<HLocationY)
+                {
+                        if(Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads)
+                {
+                            currentlocationY=currentlocationY+1;
+                }
+                
+                        else if(currentlocationY>HLocationY)
+                            if(Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Roads)
+                    {
+                                currentlocationY=currentlocationY-1;
+                    }
+                
+        
+                if((currentlocationY==HLocationY || currentlocationY==HLocationY-1 || currentlocationY==HLocationY+1) && (currentlocationX==HLocationX|| currentlocationX==HLocationX-1 || currentlocationX==HLocationX+1))
+            {
+            destination=true;
+            }
+            if(destination=true)
+            {
+                rescue=false;
+            }
+                }}}}}   
