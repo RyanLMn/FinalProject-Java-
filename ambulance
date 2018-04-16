@@ -1,4 +1,4 @@
-public class ambulance extends dispatch{
+public class ambulance extends Dispatch{
 private boolean rescue;
 	
 
