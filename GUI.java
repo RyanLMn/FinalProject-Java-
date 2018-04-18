@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+import javax.swing.text.DefaultCaret;
 
 /**
  * 
@@ -14,11 +15,12 @@ import javax.swing.event.*;
 public class GUI {
 	private static JFrame frame;
 	private static Container contentPane;
-	private static JList events;
+	private static JTextArea events;
 	private GUIMap map;
 	
 	public GUI() {
-		events = new JList();
+		events = new JTextArea();
+		events.setEnabled(false);
 		
 		map = new GUIMap(25, 25);
 		map.setBackground(Color.LIGHT_GRAY);
@@ -35,6 +37,13 @@ public class GUI {
 		JScrollPane scrollPane = new JScrollPane(events);
 		scrollPane.setPreferredSize(new Dimension(200, 200));
 		
+		buildEventPanel();
+		
+		events.setDisabledTextColor(Color.BLACK);
+		
+		DefaultCaret caret = (DefaultCaret)events.getCaret();
+		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		
 		frame.setPreferredSize(new Dimension(900, 700));
 		
 		contentPane.add(scrollPane, BorderLayout.WEST);
@@ -46,5 +55,21 @@ public class GUI {
 	
 	public void update() {
 		frame.repaint();
+	}
+	
+	public void buildEventPanel() {
+		
+	}
+	
+	public void addEvent(String event) {
+		String s;
+		StringBuilder x = new StringBuilder();
+		
+		x.append(events.getText());
+		x.append("\n");
+		x.append(event);
+		
+		s = new String(x);
+		events.append(s);;
 	}
 }

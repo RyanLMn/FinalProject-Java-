@@ -8,7 +8,7 @@ public class Event {
 	private boolean emergency; 
 	private int dispatch;
 	private boolean end;
-	
+	private String event;
 
 	private int locationX;
 	private int locationY;
@@ -18,6 +18,7 @@ public class Event {
 	{
 		
 		emergency=true;
+		situation();
 	}
 
 	public void situation()
@@ -34,35 +35,42 @@ public class Event {
 		switch(dispatch){
 			case 1:
 				ambulance=true;
+				event = "Injury";
 				break;
 		
 			case 2: 
 				firetruck=true;
+				event = "Cat Stuck in tree";
 				break;
 		
 			case 3:
 				police=true;
+				event = "Crime";
 				break;
 			
 			case 4:
 				ambulance=true;
 				firetruck=true;
+				event = "Fire";
 				break;
 			
 			case 5:
 				firetruck=true;
 				police=true;
+				event = "???";
 				break;
 			
 			case 6:
 				police=true;
 				ambulance=true;
+				event = "???";
 				break;
 			
 			case 7:
 				police=true;
 				ambulance=true;
 				firetruck=true;
+				event = "???";
 				break;
 		}
 	}
@@ -89,5 +97,12 @@ public class Event {
 	
 	public int gety() {
 		return locationY;
+	}
+	
+	public String toString() {
+		String loc;
+		loc = "(" + Integer.toString(locationX) + "," + Integer.toString(locationY) + ")";
+		event += " at " + loc + "\n";
+		return event;
 	}
 }

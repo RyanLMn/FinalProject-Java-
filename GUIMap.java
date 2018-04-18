@@ -15,12 +15,12 @@ public class GUIMap extends JPanel{
 	private int h;
 	private final int m = 25;
 
-	private Dimension size;
+	//private Dimension size;
 	
 	public GUIMap(int width, int height) {
 		w = width;
 		h = height;
-		size = new Dimension(0,0);
+		//size = new Dimension(0,0);
 	}
 	
 	@Override
@@ -55,9 +55,9 @@ public class GUIMap extends JPanel{
 			}
 		}
 		
-		for (int x=0; x < Map.getEvent().size() ; x++) {
-			int X = Map.getEvent().get(x).getx();
-			int Y = Map.getEvent().get(x).gety();
+		for (int i=0; i < Map.getEvent().size() ; i++) {
+			int X = Map.getEvent().get(i).getx();
+			int Y = Map.getEvent().get(i).gety();
 			X *= m;
 			Y *= m;
 			
