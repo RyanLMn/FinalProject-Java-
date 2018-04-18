@@ -15,6 +15,7 @@ public class Dispatch {
 	protected int ELocationX;
 	protected int ELocationY;
 	protected boolean rescue;
+	protected boolean dropoff;
 		
 	public Dispatch()
 	{
@@ -26,6 +27,7 @@ public class Dispatch {
 		homelocationY=0;
 		ambulance=false;
 		rescue=false;
+		dropoff=false;
 		
 		//move to event
 			
@@ -104,10 +106,13 @@ public class Dispatch {
 		
         
         destination=false;
-        rescue=true;
         
-		//get to hospital
-        while (rescue==true)
+        
+		if(rescue=true)
+		{
+			dropoff=true;
+		}
+        while (dropoff=true)
         
             if(currentlocationX < HLocationX)
                 {
@@ -142,7 +147,7 @@ public class Dispatch {
             }
             if(destination=true)
             {
-                rescue=false;
+                dropoff=false;
             }
                 }}}}
 }
