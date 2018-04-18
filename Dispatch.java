@@ -14,6 +14,7 @@ public class Dispatch {
 	protected boolean ambulance;
 	protected int ELocationX;
 	protected int ELocationY;
+	protected boolean rescue;
 		
 	public Dispatch()
 	{
@@ -24,7 +25,7 @@ public class Dispatch {
 		homelocationX=0;
 		homelocationY=0;
 		ambulance=false;
-		
+		rescue=false;
 		
 		//move to event
 			
@@ -100,7 +101,54 @@ public class Dispatch {
 				}
 			}
 		}	
+		
+        
+        destination=false;
+        rescue=true;
+        
+		//get to hospital
+        while (rescue==true)
+        
+            if(currentlocationX < HLocationX)
+                {
+                if(Map.getBuilding().get(currentlocationX+1).get(currentlocationY) instanceof Roads)
+                {
+                    currentlocationX=currentlocationX+1;
+                }
+                else if(currentlocationX>HLocationX)
+                {
+                    if(Map.getBuilding().get(currentlocationX-1).get(currentlocationY) instanceof Roads)
+                    {
+                    
+                        currentlocationX=currentlocationX-1;
+                        }
+                if(currentlocationY<HLocationY)
+                {
+                        if(Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads)
+                {
+                            currentlocationY=currentlocationY+1;
+                }
+                
+                        else if(currentlocationY>HLocationY)
+                            if(Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Roads)
+                    {
+                                currentlocationY=currentlocationY-1;
+                    }
+                
+        
+                if((currentlocationY==HLocationY || currentlocationY==HLocationY-1 || currentlocationY==HLocationY+1) && (currentlocationX==HLocationX|| currentlocationX==HLocationX-1 || currentlocationX==HLocationX+1))
+            {
+            destination=true;
+            }
+            if(destination=true)
+            {
+                rescue=false;
+            }
+                }}}}
 }
+
+
+//return to home method
 
 public void return
 {
