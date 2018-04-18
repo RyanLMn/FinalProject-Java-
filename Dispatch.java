@@ -53,7 +53,10 @@ public class Dispatch {
 	   {
 	       return ELocationX;
 	   }
-	   
+	   public boolean getDestination()
+{
+	return destination;
+}
 	   public int getElocationY()
 	   {
 	   return ELocationY;
