@@ -37,6 +37,8 @@ public class Event {
                 ambulance=true;
                 break;
         
+        
+        //cat in a tree?
             case 2: 
                 firetruck=true;
                 break;
