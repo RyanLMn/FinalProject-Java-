@@ -16,13 +16,14 @@ public class Event {
     
     public Event()
     {
+        end=true;
         situation();
         emergency=true;
     }
 
     public void situation()
     {
-    
+    end=false;
         Random rand = new Random();
         
         //50 is max 1 is min
@@ -67,6 +68,12 @@ public class Event {
                 ambulance=true;
                 firetruck=true;
                 break;
+        }
+        int i=30
+        
+        while(i>0)
+        {
+        i--;
         }
     }
     
