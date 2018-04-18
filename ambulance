@@ -1,6 +1,6 @@
 package EMSSystem;
 public class ambulance extends Dispatch{
-private boolean rescue;
+
     private int HLocationX;
     private int HLocationY;
 
