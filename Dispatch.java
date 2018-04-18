@@ -28,6 +28,36 @@ public class Dispatch {
 		
 		//move to event
 			
+		
+					
+						
+		//return home
+		
+		
+	}	
+	
+	public void setElocationX(int x)
+	{
+	    ELocationX=x;
+	   }
+	   
+	   public void setElocationY(int y)
+	   {
+	       ELocationY=y;
+	   }
+	   
+	   public int getElocationX()
+	   {
+	       return ELocationX;
+	   }
+	   
+	   public int getElocationY()
+	   {
+	   return ELocationY;
+}
+	
+	public void Respond
+	{
 		if (active=true)
 		{
 			destination=false;
@@ -70,10 +100,11 @@ public class Dispatch {
 				}
 			}
 		}	
-					
-						
-		//return home
-		if (active==false)
+}
+
+public void return
+{
+	if (active==false)
 		{
 			active=false;
 		}
@@ -109,26 +140,4 @@ public class Dispatch {
 				}
 			}
 		}
-		
-	}	
-	
-	public void setElocationX(int x)
-	{
-	    ELocationX=x;
-	   }
-	   
-	   public void setElocationY(int y)
-	   {
-	       ELocationY=y;
-	   }
-	   
-	   public int getElocationX()
-	   {
-	       return ELocationX;
-	   }
-	   
-	   public int getElocationY()
-	   {
-	   return ELocationY;
-}
-}
+}}
