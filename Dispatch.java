@@ -59,7 +59,7 @@ public class Dispatch {
 	   return ELocationY;
 }
 	
-	public void Respond
+	public void Respond()
 	{
 		if (active=true)
 		{
@@ -155,7 +155,7 @@ public class Dispatch {
 
 //return to home method
 
-public void return
+public void return()
 {
 	if (active==false)
 		{
