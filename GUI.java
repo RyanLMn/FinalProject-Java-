@@ -21,6 +21,7 @@ public class GUI {
 	public GUI() {
 		events = new JTextArea();
 		events.setEnabled(false);
+		events.setDisabledTextColor(Color.BLACK);
 		
 		map = new GUIMap(25, 25);
 		map.setBackground(Color.LIGHT_GRAY);
@@ -37,12 +38,10 @@ public class GUI {
 		JScrollPane scrollPane = new JScrollPane(events);
 		scrollPane.setPreferredSize(new Dimension(200, 200));
 		
-		buildEventPanel();
-		
-		events.setDisabledTextColor(Color.BLACK);
-		
 		DefaultCaret caret = (DefaultCaret)events.getCaret();
 		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+		
+		
 		
 		frame.setPreferredSize(new Dimension(900, 700));
 		
@@ -57,10 +56,6 @@ public class GUI {
 		frame.repaint();
 	}
 	
-	public void buildEventPanel() {
-		
-	}
-	
 	public void addEvent(String event) {
 		String s;
 		StringBuilder x = new StringBuilder();
@@ -70,6 +65,7 @@ public class GUI {
 		x.append(event);
 		
 		s = new String(x);
-		events.append(s);;
+		events.setText("");
+		events.append(s);
 	}
 }

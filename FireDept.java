@@ -7,12 +7,17 @@ package EMSSystem;
  */
 
 public class FireDept extends Building {
-// array of firetrucks
-	
-	private int number; //number of fire trucks at station
+	private firetruck[] Firetrucks;
 	
 	public FireDept(Location l, int number) {
 		super(l);
-		this.number = number;
+		Firetrucks = new firetruck[number];
+		for (int x = 0; x< Firetrucks.length; x++) {
+			Firetrucks[x] = new firetruck();
+		}
+	}
+	
+	public firetruck[] returnFiretrucks () {
+		return Firetrucks;
 	}
 }

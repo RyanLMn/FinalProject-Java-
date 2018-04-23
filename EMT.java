@@ -7,11 +7,18 @@ package EMSSystem;
  */
 
 public class EMT extends Building {
-//array of ambulances
-	private int number; // number of ambulances at station
+	private ambulance[] ambulances;
+	
 	
 	public EMT(Location l, int number) {
 		super(l);
-		this.number = number;
+		ambulances = new ambulance[number];
+		for (int x = 0; x< ambulances.length; x++) {
+			ambulances[x] = new ambulance();
+		}
+	}
+	
+	public ambulance[] returnAmbs() {
+		return ambulances;
 	}
 }

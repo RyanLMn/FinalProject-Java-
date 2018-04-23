@@ -135,6 +135,9 @@ public class Map {
 	
 	public void setEvent(Event event) {
 		events.add(event);
+		
+		
+		
 	}
 	
 	public static ArrayList<Event> getEvent() {

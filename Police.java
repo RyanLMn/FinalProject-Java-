@@ -7,12 +7,17 @@ package EMSSystem;
  */
 
 public class Police extends Building{
-//array of police cars
-	
-	private int number; // number of police cars at station
+	private PoliceCar[] policeCars;
 	
 	public Police(Location l, int number) {
 		super(l);
-		this.number = number;
+		policeCars = new PoliceCar[number];
+		for (int x = 0; x< policeCars.length; x++) {
+			policeCars[x] = new PoliceCar();
+		}
+	}
+	
+	public PoliceCar[] returnPolice() {
+		return policeCars;
 	}
 }

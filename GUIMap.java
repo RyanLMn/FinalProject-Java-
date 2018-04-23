@@ -34,7 +34,7 @@ public class GUIMap extends JPanel{
 				X *= m;
 				Y *= m;
 				if (B instanceof House) {
-					g.setColor(Color.WHITE);
+					g.setColor(Color.GRAY);
 					g.fillRect(X, Y, m, m);
 				} else if (B instanceof Roads) {
 					g.setColor(Color.BLACK);
@@ -46,7 +46,7 @@ public class GUIMap extends JPanel{
 					g.setColor(Color.RED);
 					g.fillRect(X, Y, m, m);
 				} else if (B instanceof Hospital) {
-					g.setColor(Color.ORANGE);
+					g.setColor(Color.WHITE);
 					g.fillRect(X, Y, m, m);
 				} else {
 					g.setColor(Color.BLUE);
