@@ -14,7 +14,7 @@ public class EMT extends Building {
 		super(l);
 		ambulances = new ambulance[number];
 		for (int x = 0; x< ambulances.length; x++) {
-			ambulances[x] = new ambulance();
+			ambulances[x] = new ambulance(l);
 		}
 	}
 	

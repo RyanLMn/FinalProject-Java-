@@ -13,7 +13,7 @@ public class FireDept extends Building {
 		super(l);
 		Firetrucks = new firetruck[number];
 		for (int x = 0; x< Firetrucks.length; x++) {
-			Firetrucks[x] = new firetruck();
+			Firetrucks[x] = new firetruck(l);
 		}
 	}
 	

@@ -3,15 +3,10 @@ package EMSSystem;
 public class firetruck extends Dispatch{
 
 	
-	public firetruck()
+	public firetruck(Location l)
 	{
-		
-		homelocationX=1;
-	
-		homelocationY=1;
+		super(l);
 		size=2;
-
-		
 		active=true;
 
 	}

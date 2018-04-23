@@ -31,7 +31,7 @@ public class Event {
 		locationY=rand.nextInt(Map.getBuilding().get(locationX).size());
 		
 	
-		dispatch=rand.nextInt(8)+1;
+		dispatch=rand.nextInt(7)+1;
 		switch(dispatch){
 			case 1:
 				ambulance=true;
@@ -57,20 +57,20 @@ public class Event {
 			case 5:
 				firetruck=true;
 				police=true;
-				event = "???";
+				event = "Arson";
 				break;
 			
 			case 6:
 				police=true;
 				ambulance=true;
-				event = "???";
+				event = "Armed Robbery";
 				break;
 			
 			case 7:
 				police=true;
 				ambulance=true;
 				firetruck=true;
-				event = "???";
+				event = "Accident";
 				break;
 		}
 	}

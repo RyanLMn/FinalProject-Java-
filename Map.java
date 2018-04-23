@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * 
  * @author Ryan Morgan
  *
+ * the row and column values are backwards
  */
 
 public class Map {
@@ -54,6 +55,14 @@ public class Map {
 			rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
 		} while (!(buildings.get(rngx).get(rngy) instanceof House));
 		Location l = new Location (rngx,rngy);
+		h= new Hospital(l);
+		buildings.get(rngx).set(rngy, h);
+		
+		do {
+			rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
+			rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
+		} while (!(buildings.get(rngx).get(rngy) instanceof House));
+		l = new Location (rngx,rngy);
 		e= new EMT(l, 5);
 		buildings.get(rngx).set(rngy, e);
 		
@@ -72,14 +81,6 @@ public class Map {
 		l = new Location (rngx,rngy);
 		p= new Police(l, 7);
 		buildings.get(rngx).set(rngy, p);
-		
-		do {
-			rngx = Randomizer.getRgen((buildings.size()/2)+1) * 2;
-			rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
-		} while (!(buildings.get(rngx).get(rngy) instanceof House));
-		l = new Location (rngx,rngy);
-		h= new Hospital(l);
-		buildings.get(rngx).set(rngy, h);
 		
 	}
 	
@@ -135,9 +136,23 @@ public class Map {
 	
 	public void setEvent(Event event) {
 		events.add(event);
+		if (event.getFireTruck()) {
+			for(int x=1; x < f.returnFiretrucks().length; x++) {
+				if (!f.returnFiretrucks()[x].active) {
+					f.returnFiretrucks()[x].active = true;
+					f.returnFiretrucks()[x].setElocationX(event.getx());
+					f.returnFiretrucks()[x].setElocationY(event.gety());
+					break;
+				}
+			}
+		}
 		
-		
-		
+	}
+	
+	public void respond() {
+		for(int x=1; x < f.returnFiretrucks().length; x++) {
+			f.returnFiretrucks()[x].Respond();
+		}
 	}
 	
 	public static ArrayList<Event> getEvent() {

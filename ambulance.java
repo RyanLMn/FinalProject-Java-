@@ -5,11 +5,10 @@ public class ambulance extends Dispatch{
     private int HLocationX;
     private int HLocationY;
 
-    public ambulance()
+    public ambulance(Location l)
     {
+    	super(l);
         size=1;
-        homelocationX=0;
-        homelocationY=0;
         rescue=true;
         
         ambulance=true;

@@ -1,12 +1,10 @@
 package EMSSystem;
 
 public class PoliceCar extends Dispatch{
-	public PoliceCar()
+	public PoliceCar(Location l)
 	{
+		super(l);
 		size=1;
-		homelocationX=0;
-		homelocationY=0;
-	
 	
 		active=true;
 	}

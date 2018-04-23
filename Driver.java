@@ -20,6 +20,11 @@ public class Driver {
 		
 		gui = new GUI();
 		
+		
+		System.out.print(Map.getHospitalLoc().getColumn() + ",");
+		System.out.print(Map.getHospitalLoc().getRow());
+		
+		
 		int rngEvent;
 		for (int time = 0; time < 2016; time+=5) {
 			rngEvent = Randomizer.getRgen(100);
@@ -33,6 +38,7 @@ public class Driver {
 			} catch (InterruptedException ex) {
 				
 			}
+			map.respond();
 			gui.update();
 		}
 	}

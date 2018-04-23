@@ -7,7 +7,7 @@ package EMSSystem;
  */
 
 public class Location {
-	int row, col;
+	int row, col; //
 	
 	public Location (int row, int col) {
 		this.row = row;

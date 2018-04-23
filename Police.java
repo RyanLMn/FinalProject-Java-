@@ -13,7 +13,7 @@ public class Police extends Building{
 		super(l);
 		policeCars = new PoliceCar[number];
 		for (int x = 0; x< policeCars.length; x++) {
-			policeCars[x] = new PoliceCar();
+			policeCars[x] = new PoliceCar(l);
 		}
 	}
 	
