@@ -16,8 +16,8 @@ public class Dispatch {
 	protected int ELocationY;
 	protected boolean rescue;
 	protected boolean dropoff;
-	protected HLocationX;
-	protected HLocationY;
+	protected int HLocationX;
+	protected int HLocationY;
 		
 	public Dispatch(Location l)
 	{
