@@ -6,8 +6,8 @@ public class firetruck extends Dispatch{
 	public firetruck()
 	{
 		
-		homelocationX=rand.nextInt(Map.getFireLoc().size());
-		homelocationY=rand.nextInt(Map.getFireLoc().get(locationX).size());
+		homelocationX=Map.getFireLoc().getColumn();
+		homelocationY=Map.getFireLoc().getRow();
 		size=2;
 
 		
