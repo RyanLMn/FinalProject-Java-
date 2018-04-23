@@ -117,6 +117,7 @@ return ELocationY;
 			if(rescue=true)
 			{
 				dropoff=true;
+				active=true;
 			}
 	        while (dropoff=true)
 	        
@@ -160,9 +161,9 @@ return ELocationY;
 			   {
 			   	if (active==false)
 			   		{
-			   			active=false;
+			   			active=true;
 			   		}
-			   		while(active=false)
+			   		while(active=true)
 			   		{	
 			   			if(currentlocationX<homelocationX)
 			   			{
@@ -189,6 +190,7 @@ return ELocationY;
 			   							}
 			   							if((currentlocationY==homelocationY || currentlocationY==homelocationY-1 || currentlocationY==homelocationY+1) && (currentlocationX==homelocationX || currentlocationX==homelocationX-1 || currentlocationX==homelocationX+1))
 			   								homedestination=true;
+										active=false;
 			   						}
 			   					}
 			   				}
