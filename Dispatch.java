@@ -31,7 +31,7 @@ public class Dispatch {
 		ambulance=false;
 		rescue=false;
 		dropoff=false;
-		HlocationX=Map.getHospitalLoc().getColumn();
+		HLocationX=Map.getHospitalLoc().getColumn();
 		HLocationY=Map.getHospitalLoc().getRow()
 		
 	}
