@@ -3,11 +3,10 @@ package EMSSystem;
 public class firetruck extends Dispatch{
 
 	
-	public firetruck()
+	public firetruck(Location l)
 	{
 		
-		homelocationX=Map.getFireLoc().getColumn();
-		homelocationY=Map.getFireLoc().getRow();
+		super(l);
 		size=2;
 
 		
