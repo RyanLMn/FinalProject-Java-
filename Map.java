@@ -117,19 +117,19 @@ public class Map {
 		return road;
 	}
 	
-	public Location getETMLoc() {
+	public static Location getETMLoc() {
 		return e.getLocation();
 	}
 	
-	public Location getFireLoc() {
+	public static Location getFireLoc() {
 		return f.getLocation();
 	}
 	
-	public Location getPoliceLoc() {
+	public static Location getPoliceLoc() {
 		return p.getLocation();
 	}
 	
-	public Location getHospitalLoc() {
+	public static Location getHospitalLoc() {
 		return h.getLocation();
 	}
 	
