@@ -6,11 +6,10 @@ public class police extends Dispatch{
 
 	
 	
-	public police()
+	public police(Location l)
 	{
 	size=1;
-	homelocationX=Map.getPoliceLoc().getColumn();
-	homelocationY=Map.getPoliceLoc().getRow();
+	super(l);
 
 
 	active=true;
