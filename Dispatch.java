@@ -19,14 +19,15 @@ public class Dispatch {
 	protected HLocationX;
 	protected HLocationY;
 		
-	public Dispatch()
+	public Dispatch(Location l)
 	{
+		
 		size=1;
 		active=false;
+		homelocationX=l.getRow();
+		homelocationY=l.getColumn();
 		currentlocationX=homelocationX;
 		currentlocationY=homelocationY;
-		homelocationX=0;
-		homelocationY=0;
 		ambulance=false;
 		rescue=false;
 		dropoff=false;
