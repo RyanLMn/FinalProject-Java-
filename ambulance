@@ -7,8 +7,9 @@ public class ambulance extends Dispatch{
     public ambulance()
     {
         size=1;
-        homelocationX=0;
-        homelocationY=0;
+      
+        homelocationX=rand.nextInt(Map.getHospitalLoc().size());
+        homelocationY=rand.nextInt(Map.getHospitalLoc().get(locationX).size())
         rescue=true;
         
         ambulance=true;
