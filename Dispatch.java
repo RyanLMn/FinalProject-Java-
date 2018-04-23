@@ -157,7 +157,12 @@ return ELocationY;
 	            {
 	                dropoff=false;
 	            }
-	}}}}
+	
+			
+			}
+			}
+		    }
+	   }
 	   public void returnHome()
 			   {
 			   	if (active==false)
