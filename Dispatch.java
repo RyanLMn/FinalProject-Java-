@@ -16,6 +16,8 @@ public class Dispatch {
 	protected int ELocationY;
 	protected boolean rescue;
 	protected boolean dropoff;
+	protected HLocationX;
+	protected HLocationY;
 		
 	public Dispatch()
 	{
@@ -28,6 +30,8 @@ public class Dispatch {
 		ambulance=false;
 		rescue=false;
 		dropoff=false;
+		HlocationX=Map.getHospitalLoc().getColumn();
+		HLocationY=Map.getHospitalLoc().getRow()
 		
 	}
 	
