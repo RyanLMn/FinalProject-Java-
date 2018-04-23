@@ -4,12 +4,10 @@ public class ambulance extends Dispatch{
     private int HLocationX;
     private int HLocationY;
 
-    public ambulance()
+    public ambulance(Location l)
     {
         size=1;
-      
-        homelocationX=Map.getHospitalLoc().getColumn();
-        homelocationY=Map.getHospitcalLoc().getRow();
+      super(l);
         rescue=true;
         
         ambulance=true;
