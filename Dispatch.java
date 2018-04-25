@@ -125,7 +125,7 @@
 					dropoff=true;
 					active=true;
 				}
-		        while (dropoff=true)
+		        if(dropoff=true)
 		        {
 		            if(currentlocationX < HLocationX)
 		            {
@@ -135,12 +135,13 @@
 		                }
 		            }
 		                else if(currentlocationX>HLocationX)
-		            
+		                {
               if(Map.getBuilding().get(currentlocationX-1).get(currentlocationY) instanceof Roads)
-		                    {
-		                    
-		                        currentlocationX=currentlocationX-1;
-		                        }
+              {
+              
+		            currentlocationX=currentlocationX-1;
+		      }
+		                }
 		                if(currentlocationY<HLocationY)
 		                {
 		                        if(Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads)
@@ -166,7 +167,6 @@
 		
 				
 				}
-				
 			    
 		   
 		   public void returnHome()
