@@ -1,3 +1,4 @@
+
 	package EMSSystem;
 
 	public class Dispatch {
@@ -20,6 +21,7 @@
 		protected int HLocationY; //Location of Hospital Y
 		protected int DestinationX;
 		protected int DestinationY;
+
 			
 		public Dispatch(Location l)
 		{
@@ -136,5 +138,3 @@
 		        
 				}
 	}
-
-

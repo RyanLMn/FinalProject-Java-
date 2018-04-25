@@ -1,0 +1,20 @@
+package EMSSystem;
+
+
+
+public class police extends Dispatch{
+
+	
+	
+	public police(Location l)
+	{
+	size=1;
+	super(l);
+
+
+	active=true;
+	
+	
+
+}
+}

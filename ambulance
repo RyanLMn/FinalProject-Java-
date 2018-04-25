@@ -1,0 +1,22 @@
+package EMSSystem;
+public class ambulance extends Dispatch{
+
+    private int HLocationX;
+    private int HLocationY;
+
+    public ambulance(Location l)
+    {
+        size=1;
+      super(l);
+        rescue=true;
+        
+        ambulance=true;
+        rescue=false;
+        HLocationX=0;
+        HLocationY=0;
+        
+        
+            
+        
+
+        }   
