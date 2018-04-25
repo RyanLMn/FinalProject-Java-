@@ -4,36 +4,36 @@
 	public class Dispatch {
 		//location (x, y) positive values are roads on grid
 
-		protected int size;
-		protected boolean active;
-		protected int homelocationX;
-		protected int homelocationY;
-		protected boolean destination;
-		protected boolean homedestination;
-		protected int currentlocationX;
-		protected int currentlocationY;
-		protected boolean ambulance;
-		protected int ELocationX;
-		protected int ELocationY;
-		protected boolean rescue;
-		protected boolean dropoff;
-		protected int HLocationX;
-		protected int HLocationY;
+		protected int size; //Size of Car
+		protected boolean active; //Determines if Car is moving or not
+		protected int homelocationX; //Location of their home station, their return point, on the X
+		protected int homelocationY; //Location of their home station, home point on Y
+		protected boolean destination; //destination determines whether they've arrived to their event or not.
+		protected boolean homedestination; //Like destination only for the returning home method.
+		protected int currentlocationX; //Notes current location of vehicle on the X
+		protected int currentlocationY; //Notes current location of vehicle on the Y
+		protected boolean ambulance; //True only for ambulance subclass, enabling a specific method within Dispatch that drives to the hospital first instead of the homebase.
+		protected int ELocationX; //The  X location of the event they are moving to.
+		protected int ELocationY; //Y location of event they are moving to
+		protected boolean rescue; 
+		protected boolean dropoff; //Like destination but for hospital
+		protected int HLocationX; //Location of Hospital X
+		protected int HLocationY; //Location of Hospital Y
 			
 		public Dispatch(Location l)
 		{
 			
 			size=1;
-			active=false;
-			homelocationX=l.getRow();
-			homelocationY=l.getColumn();
-			currentlocationX=homelocationX;
+			active=false; //vehicle is not moving by default
+			homelocationX=l.getRow(); //gets the x value 
+			homelocationY=l.getColumn(); //gets the y value
+			currentlocationX=homelocationX; 
 			currentlocationY=homelocationY;
 			ambulance=false;
 			rescue=false;
 			dropoff=false;
 			HLocationX=Map.getHospitalLoc().getColumn();
-			HLocationY=Map.getHospitalLoc().getRow()
+			HLocationY=Map.getHospitalLoc().getRow();
 			
 		}
 		
@@ -41,25 +41,25 @@
 
 		public void setElocationX(int x)
 		{
-		    ELocationX=x;
+		    ELocationX=x; //setter method for Event Location
 		   }
 		   
 		   public void setElocationY(int y)
 		   {
-		       ELocationY=y;
+		       ELocationY=y; //setter method for Event Location
 		   }
 		   
 		   public int getElocationX()
 		   {
-		       return ELocationX;
+		       return ELocationX; //Get method for Event Location
 		   }
 		   public boolean getDestination()
 	{
-		return destination;
+		return destination;  //Get method for
 	}
 		   public int getElocationY()
 		   {
-	return ELocationY;
+	return ELocationY; //Get method for Event Location
 		   }
 		   public boolean getActive(){
 		   return active;
@@ -74,7 +74,7 @@
 				if (active=true)
 				{
 					destination=false;
-					while(active=true)
+					if(active=true)
 					{
 						if(currentlocationX<ELocationX)
 						{
@@ -125,7 +125,7 @@
 					dropoff=true;
 					active=true;
 				}
-		        if(dropoff=true)
+		        while (dropoff=true)
 		        {
 		            if(currentlocationX < HLocationX)
 		            {
@@ -167,6 +167,7 @@
 		
 				
 				}
+				
 			    
 		   
 		   public void returnHome()
@@ -208,6 +209,6 @@
 				   				}
 				   			}
 				   		}
-					}	
-		   }
+	}}
+
 
