@@ -62,37 +62,38 @@
 	return ELocationY; //Get method for Event Location
 		   }
 		   public boolean getActive(){
-		   return active;
+		   return active; //get method for active
 		  
 		   } 
 		   public void setActive(){
-			   active=true;
+			   active=true; //set method for active
 		   }
 		   
 		   public void Respond()
 			{
-				if (active=true)
+				if (active=true)//I.E. when tasked to move
 				{
-					destination=false;
-					if(active=true)
+					destination=false; //has not reached destination yet
+					if(active=true) 
 					{
-						if(currentlocationX<ELocationX)
+						if(currentlocationX<ELocationX) //If the destination is to the right of the vehicle
 						{
-							if(Map.getBuilding().get(currentlocationX+1).get(currentlocationY) instanceof Roads)
+							if(Map.getBuilding().get(currentlocationX+1).get(currentlocationY) instanceof Roads) //checks for road at it's right
+							
 							{
-								currentlocationX=currentlocationX+1;
+								currentlocationX=currentlocationX+1; //moves right
 							}
 						}
-							else if(currentlocationX>ELocationX)
+							else if(currentlocationX>ELocationX) //if it's to the left of vehicle
 							{
-								if(Map.getBuilding().get(currentlocationX-1).get(currentlocationY) instanceof Roads)
+								if(Map.getBuilding().get(currentlocationX-1).get(currentlocationY) instanceof Roads) //checks to see if there is a road at it's left
 								{
-									currentlocationX=currentlocationX-1;
+									currentlocationX=currentlocationX-1; //moves left
 								}
 							}
-								if(currentlocationY<ELocationY)
+								if(currentlocationY<ELocationY) //if the event is above the vehicle
 								{
-									if(Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads)
+									if(Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads) //if there is a road above it.
 									{
 										currentlocationY=currentlocationY+1;
 									}
@@ -125,7 +126,7 @@
 					dropoff=true;
 					active=true;
 				}
-		        while (dropoff=true)
+		        if (dropoff=true)
 		        {
 		            if(currentlocationX < HLocationX)
 		            {
@@ -176,7 +177,7 @@
 				   		{
 				   			active=true;
 				   		}
-				   		while(active=true)
+				   		if (active=true)
 				   		{	
 				   			if(currentlocationX<homelocationX)
 				   			{
@@ -184,23 +185,28 @@
 				   				{
 				   					currentlocationX=currentlocationX+1;
 				   				}
+				   			}
 				   				else if(currentlocationX>homelocationX)
 				   				{
 				   					if(Map.getBuilding().get(currentlocationX-1).get(currentlocationY) instanceof Roads)
 				   					{	
 				   						currentlocationX=currentlocationX-1;
 				   					}
+				   				}
 				   					if(currentlocationY<homelocationY)
 				   					{
 				   						if(Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads)
 				   						{
 				   							currentlocationY=currentlocationY+1;
 				   						}
-				   						else if(currentlocationY>homelocationY) {
+				   					}
+				   						else if(currentlocationY>homelocationY) 
+				   						{
 				   							if(Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Roads)
 				   							{
 				   								currentlocationY=currentlocationY-1;
 				   							}
+				   						}
 				   							if((currentlocationY==homelocationY || currentlocationY==homelocationY-1 || currentlocationY==homelocationY+1) && (currentlocationX==homelocationX || currentlocationX==homelocationX-1 || currentlocationX==homelocationX+1))
 				   								homedestination=true;
 											active=false;
@@ -210,5 +216,6 @@
 				   			}
 				   		}
 	}}
+
 
 
