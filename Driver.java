@@ -1,33 +1,40 @@
+package EMSSystem;
+
+import java.util.ArrayList;
 
 /**
- * Write a description of class Driver here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ryan Morgan
+ *
  */
-public class Driver
-{
-    // instance variables - replace the example below with your own
-    private int x;
 
-    /**
-     * Constructor for objects of class Driver
-     */
-    public Driver()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+public class Driver {
+	
+	public static void main(String[] args){
+		Map map;
+		GUI gui;
+		Event event;
+		ArrayList<Event> events = new ArrayList<>();
+		
+		map  = new Map();
+		
+		gui = new GUI();
+		
+		int rngEvent;
+		for (int time = 0; time < 2016; time+=5) {
+			rngEvent = Randomizer.getRgen(100);
+			if (rngEvent <= 20) {  //chance of an event being created.
+				event = new Event();  //Creates a new event
+				map.setEvent(event);  //Add the new event to the arraylist of events in the map class
+				gui.addEvent(event.toString());
+			}
+			try {
+				Thread.sleep(1000);  //time between ticks *REMEMBER 1000 = 1 second
+			} catch (InterruptedException ex) {
+				
+			}
+			map.respond();
+			gui.update();
+		}
+	}
 }
