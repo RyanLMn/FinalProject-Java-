@@ -153,6 +153,7 @@ public class Map {
 					p.returnPolice()[x].setActive();
 					p.returnPolice()[x].setElocationX(event.getx());
 					p.returnPolice()[x].setElocationY(event.gety());
+					break;
 				}
 			}
 		}
@@ -163,6 +164,7 @@ public class Map {
 					e.returnAmbs()[x].setActive();
 					e.returnAmbs()[x].setElocationX(event.getx());
 					e.returnAmbs()[x].setElocationY(event.gety());
+					break;
 				}
 			}
 		}

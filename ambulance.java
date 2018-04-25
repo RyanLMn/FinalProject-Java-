@@ -9,12 +9,11 @@ public class ambulance extends Dispatch{
     {
     	super(l);
         size=1;
-        rescue=true;
+        
         
         ambulance=true;
-        rescue=false;
-        HLocationX=0;
-        HLocationY=0;
+        rescue=true;
+
         
         
             

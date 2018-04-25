@@ -1,4 +1,4 @@
-package EMSSystem;
+	package EMSSystem;
 
 	public class Dispatch {
 		//location (x, y) positive values are roads on grid
@@ -18,6 +18,8 @@ package EMSSystem;
 		protected boolean dropoff; //Like destination but for hospital
 		protected int HLocationX; //Location of Hospital X
 		protected int HLocationY; //Location of Hospital Y
+		protected int DestinationX;
+		protected int DestinationY;
 			
 		public Dispatch(Location l)
 		{
@@ -28,6 +30,8 @@ package EMSSystem;
 			homelocationY=l.getColumn(); //gets the y value
 			currentlocationX=homelocationX; 
 			currentlocationY=homelocationY;
+			DestinationX=homelocationX;
+			DestinationY=homelocationY;
 			ambulance=false;
 			rescue=false;
 			dropoff=false;
@@ -41,11 +45,13 @@ package EMSSystem;
 		public void setElocationX(int x)
 		{
 		    ELocationX=x; //setter method for Event Location
+		    DestinationX=ELocationX;
 		   }
 		   
 		   public void setElocationY(int y)
 		   {
-		       ELocationY=y; //setter method for Event Location
+		       ELocationY=y;
+		    		   DestinationY=ELocationY; //setter method for Event Location
 		   }
 		   
 		   public int getElocationX()
@@ -66,16 +72,18 @@ package EMSSystem;
 		   } 
 		   public void setActive(){
 			   active=true; //set method for active
+			   destination=false;
 		   }
+		   
 		   
 		   public void Respond()
 			{
-				if (active=true)//I.E. when tasked to move
-				{
-					destination=false; //has not reached destination yet
-					if(active=true) 
+				    //has not reached destination yet
+					if(active==true) 
 					{
-						if(currentlocationX<ELocationX) //If the destination is to the right of the vehicle
+						
+					
+						if(currentlocationX<DestinationX) //If the destination is to the right of the vehicle
 						{
 							if(Map.getBuilding().get(currentlocationX+1).get(currentlocationY) instanceof Roads) //checks for road at it's right
 							
@@ -83,137 +91,50 @@ package EMSSystem;
 								currentlocationX=currentlocationX+1; //moves right
 							}
 						}
-							else if(currentlocationX>ELocationX) //if it's to the left of vehicle
-							{
+						else if(currentlocationX>DestinationX) //if it's to the left of vehicle
+						{
 								if(Map.getBuilding().get(currentlocationX-1).get(currentlocationY) instanceof Roads) //checks to see if there is a road at it's left
 								{
 									currentlocationX=currentlocationX-1; //moves left
 								}
-							}
-								if(currentlocationY<ELocationY) //if the event is above the vehicle
-								{
-									if(Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads) //if there is a road above it.
-									{
+						}
+						if(currentlocationY<DestinationY) //if the event is above the vehicle
+						{
+							if(Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads) //if there is a road above it.
+							{
 										currentlocationY=currentlocationY+1;
-									}
-								}
-									else if(currentlocationY>ELocationY) 
-									{
-										if(Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Roads)
-										{
-											currentlocationY=currentlocationY-1;
-										}
-									}
-									if((currentlocationY==ELocationY || currentlocationY==ELocationY-1 || currentlocationY==ELocationY+1) && (currentlocationX==ELocationX || currentlocationX==ELocationX-1 || currentlocationX==ELocationX+1))
-									{
-										destination=true;
-									}
-									if(destination=true && ambulance != true)
-									{
-										active=false;
-									}
-								}
+							}
+						}
+						else if(currentlocationY>DestinationY) 
+						{
+							if(Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Roads)
+							{
+									currentlocationY=currentlocationY-1;
+							}
+						}
+						if((currentlocationY==DestinationY || currentlocationY==DestinationY-1 || currentlocationY==DestinationY+1) && (currentlocationX==DestinationX || currentlocationX==DestinationX-1 || currentlocationX==DestinationX+1)) //checks to see if it is exactly at the event or near it.
+						{
+							
+							if(ambulance == true) //checks to see if it is an ambulance or not, in which case it wll determine whether to go to hospital or home.
+							{
+									DestinationX=HLocationX;
+									DestinationY=HLocationY;
+							}
+							else
+							{
+								DestinationX=homelocationX;
+								DestinationY=homelocationY;
 							}
 						
+						}
 					
+					}
+						
 				
-				destination=false;
+				
 		        
 		        
-				if(rescue=true)
-				{
-					dropoff=true;
-					active=true;
 				}
-		        if (dropoff=true)
-		        {
-		            if(currentlocationX < HLocationX)
-		            {
-		                if(Map.getBuilding().get(currentlocationX+1).get(currentlocationY) instanceof Roads)
-		                {
-		                    currentlocationX=currentlocationX+1;
-		                }
-		            }
-		                else if(currentlocationX>HLocationX)
-		                {
-			              if(Map.getBuilding().get(currentlocationX-1).get(currentlocationY) instanceof Roads)
-			              {
-			              
-					            currentlocationX=currentlocationX-1;
-					      }
-		                }
-		                if(currentlocationY<HLocationY)
-		                {
-		                        if(Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads)
-		                {
-		                            currentlocationY=currentlocationY+1;
-		                }
-		                }
-		                        else if(currentlocationY>HLocationY)
-		                            if(Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Roads)
-		                    {
-		                                currentlocationY=currentlocationY-1;
-		                    }
-		                
-		        
-		                if((currentlocationY==HLocationY || currentlocationY==HLocationY-1 || currentlocationY==HLocationY+1) && (currentlocationX==HLocationX|| currentlocationX==HLocationX-1 || currentlocationX==HLocationX+1))
-		            {
-		            destination=true;
-		            }
-		            if(destination=true)
-		            {
-		                dropoff=false;
-		            }
-		        }
-				
-				}
-				
-			    
-		   
-		   public void returnHome()
-				   {
-				   	if (active==false)
-				   		{
-				   			active=true;
-				   		}
-				   		if (active=true)
-				   		{	
-				   			if(currentlocationX<homelocationX)
-				   			{
-				   				if(Map.getBuilding().get(currentlocationX+1).get(currentlocationY) instanceof Roads)
-				   				{
-				   					currentlocationX=currentlocationX+1;
-				   				}
-				   			}
-				   				else if(currentlocationX>homelocationX)
-				   				{
-				   					if(Map.getBuilding().get(currentlocationX-1).get(currentlocationY) instanceof Roads)
-				   					{	
-				   						currentlocationX=currentlocationX-1;
-				   					}
-				   				}
-				   					if(currentlocationY<homelocationY)
-				   					{
-				   						if(Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads)
-				   						{
-				   							currentlocationY=currentlocationY+1;
-				   						}
-				   					}
-				   						else if(currentlocationY>homelocationY) 
-				   						{
-				   							if(Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Roads)
-				   							{
-				   								currentlocationY=currentlocationY-1;
-				   							}
-				   						}
-				   							if((currentlocationY==homelocationY || currentlocationY==homelocationY-1 || currentlocationY==homelocationY+1) && (currentlocationX==homelocationX || currentlocationX==homelocationX-1 || currentlocationX==homelocationX+1))
-				   								homedestination=true;
-											active=false;
-				   						}
-				   					}
-				   				
-				   			
-				   		
 	}
 
 

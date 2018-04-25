@@ -6,6 +6,5 @@ public class PoliceCar extends Dispatch{
 		super(l);
 		size=1;
 	
-		active=true;
 	}
 }
