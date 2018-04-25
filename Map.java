@@ -137,9 +137,9 @@ public class Map {
 	public void setEvent(Event event) {
 		events.add(event);
 		if (event.getFireTruck()) {
-			for(int x=1; x < f.returnFiretrucks().length; x++) {
-				if (!f.returnFiretrucks()[x].active) {
-					f.returnFiretrucks()[x].active = true;
+			for(int x=0; x < f.returnFiretrucks().length; x++) {
+				if (!f.returnFiretrucks()[x].getActive()) {
+					f.returnFiretrucks()[x].setActive();
 					f.returnFiretrucks()[x].setElocationX(event.getx());
 					f.returnFiretrucks()[x].setElocationY(event.gety());
 					break;
@@ -147,15 +147,55 @@ public class Map {
 			}
 		}
 		
+		if (event.getPolice()) {
+			for(int x=0; x < p.returnPolice().length; x++) {
+				if (!p.returnPolice()[x].getActive()) {
+					p.returnPolice()[x].setActive();
+					p.returnPolice()[x].setElocationX(event.getx());
+					p.returnPolice()[x].setElocationY(event.gety());
+				}
+			}
+		}
+		
+		if (event.getAmbulance()) {
+			for (int x=0; x < e.returnAmbs().length; x++) {
+				if (!e.returnAmbs()[x].getActive()) {
+					e.returnAmbs()[x].setActive();
+					e.returnAmbs()[x].setElocationX(event.getx());
+					e.returnAmbs()[x].setElocationY(event.gety());
+				}
+			}
+		}
+		
 	}
 	
 	public void respond() {
-		for(int x=1; x < f.returnFiretrucks().length; x++) {
+		for(int x=0; x < f.returnFiretrucks().length; x++) {
 			f.returnFiretrucks()[x].Respond();
+		}
+		
+		for (int x=0; x < p.returnPolice().length; x++) {
+			p.returnPolice()[x].Respond();
+		}
+		
+		for (int x=0; x < e.returnAmbs().length; x++) {
+			e.returnAmbs()[x].Respond();
 		}
 	}
 	
 	public static ArrayList<Event> getEvent() {
 		return events;
+	}
+	
+	public static ambulance[] getAmbs() {
+		return e.returnAmbs();
+	}
+	
+	public static firetruck[] getFTrukcs() {
+		return f.returnFiretrucks();
+	}
+	
+	public static PoliceCar[] getPolicecars() {
+		return p.returnPolice();
 	}
 }

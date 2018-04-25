@@ -20,21 +20,16 @@ public class Driver {
 		
 		gui = new GUI();
 		
-		
-		System.out.print(Map.getHospitalLoc().getColumn() + ",");
-		System.out.print(Map.getHospitalLoc().getRow());
-		
-		
 		int rngEvent;
 		for (int time = 0; time < 2016; time+=5) {
 			rngEvent = Randomizer.getRgen(100);
-			if (rngEvent <= 95) {
-				event = new Event();
-				map.setEvent(event);
+			if (rngEvent <= 20) {  //chance of an event being created.
+				event = new Event();  //Creates a new event
+				map.setEvent(event);  //Add the new event to the arraylist of events in the map class
 				gui.addEvent(event.toString());
 			}
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(1000);  //time between ticks *REMEMBER 1000 = 1 second
 			} catch (InterruptedException ex) {
 				
 			}

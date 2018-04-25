@@ -7,7 +7,7 @@ package EMSSystem;
  */
 
 public class Police extends Building{
-	private PoliceCar[] policeCars;
+	private PoliceCar[] policeCars;  //a new array of police cars
 	
 	public Police(Location l, int number) {
 		super(l);

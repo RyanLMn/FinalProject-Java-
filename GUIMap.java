@@ -14,6 +14,8 @@ public class GUIMap extends JPanel{
 	private int w;
 	private int h;
 	private final int m = 25;
+	
+	private final int carSize = 6;
 
 	//private Dimension size;
 	
@@ -64,6 +66,38 @@ public class GUIMap extends JPanel{
 			g.setColor(Color.MAGENTA);
 			g.fillRect(X, Y, m, m);
 		}
+		
+		ambulance[] ambulances = Map.getAmbs();
+		firetruck[] firetrucks = Map.getFTrukcs();
+		PoliceCar[] policecars = Map.getPolicecars();
+		
+		for (int i=0; i < ambulances.length; i++) {
+			int X = ambulances[i].currentlocationX;
+			int Y = ambulances[i].currentlocationY;
+			X *= m;
+			Y *= m;
+			g.setColor(Color.GREEN);
+			g.fillRect(X, Y, carSize, carSize);
+		}
+		
+		for (int i=0; i < firetrucks.length; i++) {
+			int X = firetrucks[i].currentlocationX;
+			int Y = firetrucks[i].currentlocationY;
+			X *= m;
+			Y *= m;
+			g.setColor(Color.RED);
+			g.fillRect(X, Y, carSize, carSize);
+		}
+		
+		for (int i=0; i < policecars.length; i++) {
+			int X = policecars[i].currentlocationX;
+			int Y = policecars[i].currentlocationY;
+			X *= m;
+			Y *= m;
+			g.setColor(Color.BLUE);
+			g.fillRect(X, Y, carSize, carSize);
+		}
+		
 	}
 	
 	public Dimension setPreferredSize(int i, int j) {

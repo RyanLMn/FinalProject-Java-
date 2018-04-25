@@ -7,21 +7,22 @@ package EMSSystem;
  */
 
 public class Location {
-	int row, col; //
+	int row, col; // creates the row and column variables
 	
 	public Location (int row, int col) {
-		this.row = row;
-		this.col = col;
+		this.row = row;  //sets the row value to the value passed to it
+		this.col = col;  //sets the column value to the value passes to it
 	}
 	
 	public int getRow() {
-		return row;
+		return row;  //returns the row variable
 	}
 	
 	public int getColumn() {
-		return col;
+		return col;  //returns the column variable
 	}
 	
+	// return true or false if the location exits at a certain point
 	public boolean euquals (Object obj) {
 		if (obj instanceof Location) {
 			Location other = (Location) obj;

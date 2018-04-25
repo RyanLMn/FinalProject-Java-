@@ -7,7 +7,5 @@ public class firetruck extends Dispatch{
 	{
 		super(l);
 		size=2;
-		active=true;
-
 	}
 }
