@@ -158,7 +158,7 @@
 						if((currentlocationY==DestinationY || currentlocationY==DestinationY-1 || currentlocationY==DestinationY+1) && (currentlocationX==DestinationX || currentlocationX==DestinationX-1 || currentlocationX==DestinationX+1)) //checks to see if it is exactly at the event or near it.
 						{
 							
-							if(ambulance == true) //checks to see if it is an ambulance or not, in which case it wll determine whether to go to hospital or home.
+							if(ambulance == true and dropoff==true) //checks to see if it is an ambulance or not, in which case it wll determine whether to go to hospital or home.
 							{
 									DestinationX=HLocationX;
 									DestinationY=HLocationY;
