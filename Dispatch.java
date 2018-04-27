@@ -59,14 +59,15 @@
 		       return ELocationX; //Get method for Event Location
 		   }
 		   public boolean getDestination()
-	{
-		return destination;  //Get method for
-	}
+			{
+			return destination;  //Get method for
+			}
 		   public int getElocationY()
 		   {
-	return ELocationY; //Get method for Event Location
+			return ELocationY; //Get method for Event Location
 		   }
-		   public boolean getActive(){
+		   public boolean getActive()
+		   {
 		   return active; //get method for active
 		  
 		   } 
