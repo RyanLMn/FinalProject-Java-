@@ -9,6 +9,9 @@ public class Event {
 	private int dispatch;
 	private boolean end;
 	private String event;
+	private boolean PoliceArrival;
+	private boolean FiretruckArrival;
+	private boolean AmbulanceArrival;
 
 	private int locationX;
 	private int locationY;
@@ -19,8 +22,44 @@ public class Event {
 		
 		emergency=true;
 		situation();
+		PoliceArrival=false;
+		FiretruckArrival=false;
+		AmbulanceArrival=false;
+	}
+	
+	public void setPA()
+	{
+		PoliceArrival=true;
+	}
+	public void setFA()
+	{
+		FiretruckArrival=true;
+	}
+	public void setAA()
+	{
+		AmbulanceArrival=true;
+		
 	}
 
+	public boolean Arrival()
+	{
+		switch(dispatch) {
+		case 1:
+			return AmbulanceArrival;
+		case 2:
+			return FiretruckArrival;
+		case 3:
+			return PoliceArrival;
+		case 4:
+			return FiretruckArrival && AmbulanceArrival;
+		case 5:
+			return PoliceArrival && FiretruckArrival;
+		case 6:
+			return AmbulanceArrival && PoliceArrival;
+		default:
+			return AmbulanceArrival && FiretruckArrival && PoliceArrival;	
+		}	
+	}
 	public void situation()
 	{
 	

@@ -72,30 +72,36 @@ public class GUIMap extends JPanel{
 		PoliceCar[] policecars = Map.getPolicecars();
 		
 		for (int i=0; i < ambulances.length; i++) {
-			int X = ambulances[i].currentlocationX;
-			int Y = ambulances[i].currentlocationY;
-			X *= m;
-			Y *= m;
-			g.setColor(Color.GREEN);
-			g.fillRect(X, Y, carSize, carSize);
+			if (ambulances[i].active) {
+				int X = ambulances[i].currentlocationX;
+				int Y = ambulances[i].currentlocationY;
+				X *= m;
+				Y *= m;
+				g.setColor(Color.GREEN);
+				g.fillRect(X, Y, carSize, carSize);
+			}
 		}
 		
 		for (int i=0; i < firetrucks.length; i++) {
-			int X = firetrucks[i].currentlocationX;
-			int Y = firetrucks[i].currentlocationY;
-			X *= m;
-			Y *= m;
-			g.setColor(Color.RED);
-			g.fillRect(X, Y, carSize, carSize);
+			if (firetrucks[i].active) {
+				int X = firetrucks[i].currentlocationX;
+				int Y = firetrucks[i].currentlocationY;
+				X *= m;
+				Y *= m;
+				g.setColor(Color.RED);
+				g.fillRect(X, Y, carSize, carSize);
+			}
 		}
 		
 		for (int i=0; i < policecars.length; i++) {
-			int X = policecars[i].currentlocationX;
-			int Y = policecars[i].currentlocationY;
-			X *= m;
-			Y *= m;
-			g.setColor(Color.BLUE);
-			g.fillRect(X, Y, carSize, carSize);
+			if (policecars[i].active) {
+				int X = policecars[i].currentlocationX;
+				int Y = policecars[i].currentlocationY;
+				X *= m;
+				Y *= m;
+				g.setColor(Color.BLUE);
+				g.fillRect(X, Y, carSize, carSize);
+			}
 		}
 		
 	}

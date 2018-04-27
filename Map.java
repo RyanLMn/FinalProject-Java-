@@ -63,7 +63,7 @@ public class Map {
 			rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
 		} while (!(buildings.get(rngx).get(rngy) instanceof House));
 		l = new Location (rngx,rngy);
-		e= new EMT(l, 5);
+		e= new EMT(l, 10);
 		buildings.get(rngx).set(rngy, e);
 		
 		do {
@@ -71,7 +71,7 @@ public class Map {
 			rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
 		} while (!(buildings.get(rngx).get(rngy) instanceof House));
 		l = new Location (rngx,rngy);
-		f= new FireDept(l, 3);
+		f= new FireDept(l, 10);
 		buildings.get(rngx).set(rngy, f);
 		
 		do {
@@ -79,7 +79,7 @@ public class Map {
 			rngy = Randomizer.getRgen((buildings.get(0).size()/2)+1) * 2;
 		} while (!(buildings.get(rngx).get(rngy) instanceof House));
 		l = new Location (rngx,rngy);
-		p= new Police(l, 7);
+		p= new Police(l, 10);
 		buildings.get(rngx).set(rngy, p);
 		
 	}
@@ -142,6 +142,7 @@ public class Map {
 					f.returnFiretrucks()[x].setActive();
 					f.returnFiretrucks()[x].setElocationX(event.getx());
 					f.returnFiretrucks()[x].setElocationY(event.gety());
+					f.returnFiretrucks()[x].setEvent(event);
 					break;
 				}
 			}
@@ -153,6 +154,7 @@ public class Map {
 					p.returnPolice()[x].setActive();
 					p.returnPolice()[x].setElocationX(event.getx());
 					p.returnPolice()[x].setElocationY(event.gety());
+					p.returnPolice()[x].setEvent(event);
 					break;
 				}
 			}
@@ -162,8 +164,10 @@ public class Map {
 			for (int x=0; x < e.returnAmbs().length; x++) {
 				if (!e.returnAmbs()[x].getActive()) {
 					e.returnAmbs()[x].setActive();
+					e.returnAmbs()[x].setDropOff();
 					e.returnAmbs()[x].setElocationX(event.getx());
 					e.returnAmbs()[x].setElocationY(event.gety());
+					e.returnAmbs()[x].setEvent(event);
 					break;
 				}
 			}

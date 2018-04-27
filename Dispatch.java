@@ -1,4 +1,4 @@
-	package EMSSystem;
+package EMSSystem;
 
 	public class Dispatch {
 		//location (x, y) positive values are roads on grid
@@ -20,6 +20,8 @@
 		protected int HLocationY; //Location of Hospital Y
 		protected int DestinationX;
 		protected int DestinationY;
+		protected Event event;
+		protected boolean atEvent;
 			
 		public Dispatch(Location l)
 		{
@@ -38,9 +40,12 @@
 			HLocationX=Map.getHospitalLoc().getColumn();
 			HLocationY=Map.getHospitalLoc().getRow();
 			homedestination = false;
+			atEvent = false;
 		}
 		
-
+		public void setEvent(Event event) {
+			this.event = event;
+		}
 
 		public void setElocationX(int x)
 		{
@@ -59,15 +64,14 @@
 		       return ELocationX; //Get method for Event Location
 		   }
 		   public boolean getDestination()
-			{
-			return destination;  //Get method for
-			}
+	{
+		return destination;  //Get method for
+	}
 		   public int getElocationY()
 		   {
-			return ELocationY; //Get method for Event Location
+	return ELocationY; //Get method for Event Location
 		   }
-		   public boolean getActive()
-		   {
+		   public boolean getActive(){
 		   return active; //get method for active
 		  
 		   } 
@@ -85,89 +89,99 @@
 			    //has not reached destination yet
 				if(active==true) 
 				{
-					
-				
-					if(currentlocationX<DestinationX) //If the destination is to the right of the vehicle
-					{
-						if(currentlocationX+1!=Map.getBuilding().get(currentlocationY).size() && Map.getBuilding().get(currentlocationY).get(currentlocationX+1) instanceof Roads) //checks for road at it's right
-						
+					if ((atEvent && event.Arrival()) || (!atEvent)) {
+						atEvent = false;
+						if(currentlocationX<DestinationX) //If the destination is to the right of the vehicle
 						{
-							currentlocationX=currentlocationX+1; //moves right
+							if(currentlocationX+1!=Map.getBuilding().get(currentlocationY).size() && Map.getBuilding().get(currentlocationY).get(currentlocationX+1) instanceof Roads) //checks for road at it's right
+							
+							{
+								currentlocationX=currentlocationX+1; //moves right
+							}
 						}
-					}
-					else if(currentlocationX>DestinationX) //if it's to the left of vehicle
-					{
+						else if(currentlocationX>DestinationX) //if it's to the left of vehicle
+						{
+								if(currentlocationX-1 !=-1 && Map.getBuilding().get(currentlocationY).get(currentlocationX-1) instanceof Roads) //checks to see if there is a road at it's left
+								{
+									currentlocationX=currentlocationX-1; //moves left
+								}
+						}
+						else if(currentlocationX==DestinationX || currentlocationY != DestinationY)
+						{
 							if(currentlocationX-1 !=-1 && Map.getBuilding().get(currentlocationY).get(currentlocationX-1) instanceof Roads) //checks to see if there is a road at it's left
 							{
-								currentlocationX=currentlocationX-1; //moves left
+									currentlocationX=currentlocationX-1; //moves left
 							}
-					}
-					else if(currentlocationX==DestinationX || currentlocationY != DestinationY)
-					{
-						if(currentlocationX-1 !=-1 && Map.getBuilding().get(currentlocationY).get(currentlocationX-1) instanceof Roads) //checks to see if there is a road at it's left
-						{
-								currentlocationX=currentlocationX-1; //moves left
-						}
-							
-						else if (currentlocationX+1!=Map.getBuilding().get(currentlocationY).size() && Map.getBuilding().get(currentlocationY).get(currentlocationX +1) instanceof Roads)
-						{
-							currentlocationX=currentlocationX+1;
-						}
-					}
-					if(currentlocationY<DestinationY) //if the event is above the vehicle
-					{
-						if(currentlocationX+1!=Map.getBuilding().size() && Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads) //if there is a road above it.
-						{
-									currentlocationY=currentlocationY+1;
-						}
-					}
-					else if(currentlocationY>DestinationY) 
-					{
-						if(currentlocationY-1 != -1 && Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Roads)
-						{
-								currentlocationY=currentlocationY-1;
-						}
-					}
-					else if(currentlocationY==DestinationY || currentlocationX != DestinationX)
-					{
-						if(currentlocationY-1 != -1 && Map.getBuilding().get(currentlocationY-1).get(currentlocationX) instanceof Roads) //checks to see if there is a road at it's left
-						{
-								currentlocationY=currentlocationY-1; //moves left
-						}
-							
-						else if (currentlocationX+1!=Map.getBuilding().size() && Map.getBuilding().get(currentlocationY+1).get(currentlocationX) instanceof Roads)
-						{
-							currentlocationY=currentlocationY+1;
-						}
-					}
-						if((!(Map.getBuilding().get(DestinationY).get(DestinationX)instanceof Roads) && (currentlocationY==DestinationY || currentlocationY==DestinationY-1 || currentlocationY==DestinationY+1) && (currentlocationX==DestinationX || currentlocationX==DestinationX-1 || currentlocationX==DestinationX+1)) || ((currentlocationY==DestinationY) && (currentlocationX==DestinationX))) //checks to see if it is exactly at the event or near it.
-						{
-							
-							if(ambulance == true && dropoff == true) //checks to see if it is an ambulance or not, in which case it wll determine whether to go to hospital or home.
+								
+							else if (currentlocationX+1!=Map.getBuilding().get(currentlocationY).size() && Map.getBuilding().get(currentlocationY).get(currentlocationX +1) instanceof Roads)
 							{
-									DestinationX=HLocationX;
-									DestinationY=HLocationY;
-									dropoff = false;
+								currentlocationX=currentlocationX+1;
 							}
-							else if (!homedestination)
-							{
-								DestinationX=homelocationX;
-								DestinationY=homelocationY;
-								homedestination = true;
-							} else {
-								active = false;
-								homedestination = false;
-							}
-						
 						}
+						if(currentlocationY<DestinationY) //if the event is above the vehicle
+						{
+							if(currentlocationX+1!=Map.getBuilding().size() && Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads) //if there is a road above it.
+							{
+										currentlocationY=currentlocationY+1;
+							}
+						}
+						else if(currentlocationY>DestinationY) 
+						{
+							if(currentlocationY-1 != -1 && Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Roads)
+							{
+									currentlocationY=currentlocationY-1;
+							}
+						}
+						else if(currentlocationY==DestinationY || currentlocationX != DestinationX)
+						{
+							if(currentlocationY-1 != -1 && Map.getBuilding().get(currentlocationY-1).get(currentlocationX) instanceof Roads) //checks to see if there is a road at it's left
+							{
+									currentlocationY=currentlocationY-1; //moves left
+							}
+								
+							else if (currentlocationX+1!=Map.getBuilding().size() && Map.getBuilding().get(currentlocationY+1).get(currentlocationX) instanceof Roads)
+							{
+								currentlocationY=currentlocationY+1;
+							}
+						}
+							if((!(Map.getBuilding().get(DestinationY).get(DestinationX)instanceof Roads) && (currentlocationY==DestinationY || currentlocationY==DestinationY-1 || currentlocationY==DestinationY+1) && (currentlocationX==DestinationX || currentlocationX==DestinationX-1 || currentlocationX==DestinationX+1)) || ((currentlocationY==DestinationY) && (currentlocationX==DestinationX))) //checks to see if it is exactly at the event or near it.
+							{
+								
+								if(ambulance == true && dropoff == true) //checks to see if it is an ambulance or not, in which case it wll determine whether to go to hospital or home.
+								{
+										DestinationX=HLocationX;
+										DestinationY=HLocationY;
+										dropoff = false;
+										if (this instanceof ambulance) {
+											event.setAA();
+											atEvent = true;
+										}
+								}
+								else if (!homedestination)
+								{
+									DestinationX=homelocationX;
+									DestinationY=homelocationY;
+									if (this instanceof firetruck) {
+										event.setFA();
+										atEvent = true;
+									} else if (this instanceof PoliceCar) {
+										event.setPA();
+										atEvent = true;
+									}
+									homedestination = true;
+								} else {
+									active = false;
+									homedestination = false;
+								}
+							
+							}
 					
 					}
 						
-				
+				}
 				
 		        
 		        
 				}
 	}
-
 
