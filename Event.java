@@ -9,6 +9,9 @@ public class Event {
 	private int dispatch;
 	private boolean end;
 	private String event;
+	private boolean PoliceArrival;
+	private boolean FiretruckArrival;
+	private boolean AmbulanceArrival;
 
 	private int locationX;
 	private int locationY;
@@ -19,8 +22,61 @@ public class Event {
 		
 		emergency=true;
 		situation();
+		PoliceArrival=false;
+		FiretruckArrival=false;
+		AmbulanceArrival=false;
+	}
+	
+	public void setPA()
+	{
+		PoliceArrival=true;
+	}
+	public void setFA()
+	{
+		FiretruckArrival=true;
+	}
+	public void setAA()
+	{
+		AmbulanceArrival=true;
+		
 	}
 
+	public boolean Arrival()
+	{
+		if(event.equals("Injury"))
+		{
+			return AmbulanceArrival;
+		}
+		else if(event.equals("Cat Stuck in tree"))
+		{
+			return FiretruckArrival;
+		}
+		else if(event.equalsCrime("Crime"))
+		{
+			return PoliceArrival;
+		}
+		else if(event.equals("Fire"))
+		{
+			return FiretruckArrival && AmbulanceArrival;
+			
+		}
+		else if(event.equals("Arson"))
+		{
+			return PoliceArrival && FiretruckArrival;
+			
+		}
+		else if(event.equals("Armed Robbery"))
+		{
+			return AmbulanceArrival && PoliceArrival;
+			
+		}
+		else if(event.equals("Accident"))
+		{
+			return AmbulanceArrival && FiretruckArrival && PoliceArrival;
+			
+		}
+			
+	}
 	public void situation()
 	{
 	
