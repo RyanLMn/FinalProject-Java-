@@ -88,7 +88,7 @@
 				
 					if(currentlocationX<DestinationX) //If the destination is to the right of the vehicle
 					{
-						if(Map.getBuilding().get(currentlocationX+1).get(currentlocationY) instanceof Roads) //checks for road at it's right
+						if(currentlocationX+1!=Map.getBuilding().get(currentlocationY).size() && Map.getBuilding().get(currentlocationY).get(currentlocationX+1) instanceof Roads) //checks for road at it's right
 						
 						{
 							currentlocationX=currentlocationX+1; //moves right
@@ -96,45 +96,45 @@
 					}
 					else if(currentlocationX>DestinationX) //if it's to the left of vehicle
 					{
-							if(Map.getBuilding().get(currentlocationY).get(currentlocationX-1) instanceof Roads) //checks to see if there is a road at it's left
+							if(currentlocationX-1 !=-1 && Map.getBuilding().get(currentlocationY).get(currentlocationX-1) instanceof Roads) //checks to see if there is a road at it's left
 							{
 								currentlocationX=currentlocationX-1; //moves left
 							}
 					}
 					else if(currentlocationX==DestinationX || currentlocationY != DestinationY)
 					{
-						if(Map.getBuilding().get(currentlocationY).get(currentlocationX-1) instanceof Roads) //checks to see if there is a road at it's left
+						if(currentlocationX-1 !=-1 && Map.getBuilding().get(currentlocationY).get(currentlocationX-1) instanceof Roads) //checks to see if there is a road at it's left
 						{
 								currentlocationX=currentlocationX-1; //moves left
 						}
 							
-						else if (Map.getBuilding().get(currentlocationY).get(currentlocationX +1) instanceof Roads)
+						else if (currentlocationX+1!=Map.getBuilding().get(currentlocationY).size() && Map.getBuilding().get(currentlocationY).get(currentlocationX +1) instanceof Roads)
 						{
 							currentlocationX=currentlocationX+1;
 						}
 					}
 					if(currentlocationY<DestinationY) //if the event is above the vehicle
 					{
-						if(Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads) //if there is a road above it.
+						if(currentlocationX+1!=Map.getBuilding().size() && Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads) //if there is a road above it.
 						{
 									currentlocationY=currentlocationY+1;
 						}
 					}
 					else if(currentlocationY>DestinationY) 
 					{
-						if(Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Roads)
+						if(currentlocationY-1 != -1 && Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Roads)
 						{
 								currentlocationY=currentlocationY-1;
 						}
 					}
 					else if(currentlocationY==DestinationY || currentlocationX != DestinationX)
 					{
-						if(Map.getBuilding().get(currentlocationY-1).get(currentlocationX) instanceof Roads) //checks to see if there is a road at it's left
+						if(currentlocationY-1 != -1 && Map.getBuilding().get(currentlocationY-1).get(currentlocationX) instanceof Roads) //checks to see if there is a road at it's left
 						{
 								currentlocationY=currentlocationY-1; //moves left
 						}
 							
-						else if (Map.getBuilding().get(currentlocationY+1).get(currentlocationX) instanceof Roads)
+						else if (currentlocationX+1!=Map.getBuilding().size() && Map.getBuilding().get(currentlocationY+1).get(currentlocationX) instanceof Roads)
 						{
 							currentlocationY=currentlocationY+1;
 						}
