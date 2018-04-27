@@ -112,14 +112,7 @@
 							{
 								currentlocationX=currentlocationX+1
 							}
-							if(currentlocationY<DestinationY)
-							{
-									currentlocationY=currentlocationY+1;
-							}
-							else
-							{
-									currentlocationY=currentlocationY-1;
-							}
+							
 						}
 						if(currentlocationY<DestinationY) //if the event is above the vehicle
 						{
@@ -146,14 +139,7 @@
 							{
 								currentlocationY=currentlocationY+1
 							}
-							if(currentlocationX<DestinationX)
-							{
-									currentlocationX=currentlocationX+1;
-							}
-							else
-							{
-									currentlocationX=currentlocationX-1;
-							}
+							
 						}
 						if((currentlocationY==DestinationY || currentlocationY==DestinationY-1 || currentlocationY==DestinationY+1) && (currentlocationX==DestinationX || currentlocationX==DestinationX-1 || currentlocationX==DestinationX+1)) //checks to see if it is exactly at the event or near it.
 						{
