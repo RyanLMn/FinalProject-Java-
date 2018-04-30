@@ -14,6 +14,7 @@ public class Event {
 	private boolean AmbulanceArrival;
 	private int counter;
 
+
 	private int locationX;
 	private int locationY;
 
@@ -74,6 +75,7 @@ public class Event {
 				emergency = false;
 		}
 		return arrived;
+
 	}
 	public void situation()
 	{
