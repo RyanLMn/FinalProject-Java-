@@ -96,7 +96,7 @@
 				{
 					if ((atEvent && !event.getEmergency()) || (!atEvent)) {
 						atEvent = false;
-					if(skipx==false)
+					if(skipx==false || skipy==true)
 					{
 						if(currentlocationX<DestinationX && currentlocationX+2!=DestinationX)
 						{
@@ -148,7 +148,8 @@
 							}
 						}
 					}
-					if(skipy==false)
+					if(skipy==false || skipx==true)
+					{
 						if(currentlocationY<DestinationY && currentlocationY+2!=DestinationY)
 						{
 							if(currentlocationX+1!=Map.getBuilding().size() && Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads) //if there is a road above it.
