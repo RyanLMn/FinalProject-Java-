@@ -37,8 +37,8 @@ package EMSSystem;
 			ambulance=false;
 			rescue=false;
 			dropoff=false;
-			HLocationX=Map.getHospitalLoc().getColumn();
-			HLocationY=Map.getHospitalLoc().getRow();
+			HLocationX=Map.getHospitalLoc().getRow();
+			HLocationY=Map.getHospitalLoc().getColumn();
 			homedestination = false;
 			atEvent = false;
 		}
@@ -89,7 +89,7 @@ package EMSSystem;
 			    //has not reached destination yet
 				if(active==true) 
 				{
-					if ((atEvent && event.Arrival()) || (!atEvent)) {
+					if ((atEvent && !event.getEmergency()) || (!atEvent)) {
 						atEvent = false;
 						if(currentlocationX<DestinationX) //If the destination is to the right of the vehicle
 						{
@@ -146,7 +146,6 @@ package EMSSystem;
 						}
 							if((!(Map.getBuilding().get(DestinationY).get(DestinationX)instanceof Roads) && (currentlocationY==DestinationY || currentlocationY==DestinationY-1 || currentlocationY==DestinationY+1) && (currentlocationX==DestinationX || currentlocationX==DestinationX-1 || currentlocationX==DestinationX+1)) || ((currentlocationY==DestinationY) && (currentlocationX==DestinationX))) //checks to see if it is exactly at the event or near it.
 							{
-								
 								if(ambulance == true && dropoff == true) //checks to see if it is an ambulance or not, in which case it wll determine whether to go to hospital or home.
 								{
 										DestinationX=HLocationX;

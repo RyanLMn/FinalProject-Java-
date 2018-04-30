@@ -31,9 +31,9 @@ public class Driver {
 			try {
 				Thread.sleep(1000);  //time between ticks *REMEMBER 1000 = 1 second
 			} catch (InterruptedException ex) {
-				
 			}
 			map.respond();
+			map.removeEvent();
 			gui.update();
 		}
 	}

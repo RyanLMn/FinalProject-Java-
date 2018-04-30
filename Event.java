@@ -12,6 +12,7 @@ public class Event {
 	private boolean PoliceArrival;
 	private boolean FiretruckArrival;
 	private boolean AmbulanceArrival;
+	private int counter;
 
 	private int locationX;
 	private int locationY;
@@ -43,22 +44,36 @@ public class Event {
 
 	public boolean Arrival()
 	{
+		boolean arrived = false;
 		switch(dispatch) {
 		case 1:
-			return AmbulanceArrival;
+			arrived = AmbulanceArrival;
+			break;
 		case 2:
-			return FiretruckArrival;
+			arrived = FiretruckArrival;
+			break;
 		case 3:
-			return PoliceArrival;
+			arrived = PoliceArrival;
+			break;
 		case 4:
-			return FiretruckArrival && AmbulanceArrival;
+			arrived = FiretruckArrival && AmbulanceArrival;
+			break;
 		case 5:
-			return PoliceArrival && FiretruckArrival;
+			arrived = PoliceArrival && FiretruckArrival;
+			break;
 		case 6:
-			return AmbulanceArrival && PoliceArrival;
-		default:
-			return AmbulanceArrival && FiretruckArrival && PoliceArrival;	
-		}	
+			arrived = AmbulanceArrival && PoliceArrival;
+			break;
+		case 7:
+			arrived = AmbulanceArrival && FiretruckArrival && PoliceArrival;
+			break;
+		}
+		if (arrived) {
+			counter--;
+			if (counter == 0)
+				emergency = false;
+		}
+		return arrived;
 	}
 	public void situation()
 	{
@@ -75,34 +90,40 @@ public class Event {
 			case 1:
 				ambulance=true;
 				event = "Injury";
+				counter = 2;
 				break;
 		
 			case 2: 
 				firetruck=true;
 				event = "Cat Stuck in tree";
+				counter = 1;
 				break;
 		
 			case 3:
 				police=true;
 				event = "Crime";
+				counter = 3;
 				break;
 			
 			case 4:
 				ambulance=true;
 				firetruck=true;
 				event = "Fire";
+				counter = 4;
 				break;
 			
 			case 5:
 				firetruck=true;
 				police=true;
 				event = "Arson";
+				counter = 4;
 				break;
 			
 			case 6:
 				police=true;
 				ambulance=true;
 				event = "Armed Robbery";
+				counter = 5;
 				break;
 			
 			case 7:
@@ -110,6 +131,7 @@ public class Event {
 				ambulance=true;
 				firetruck=true;
 				event = "Accident";
+				counter = 7;
 				break;
 		}
 	}
@@ -128,6 +150,10 @@ public class Event {
 	
 	public boolean getEmergency() {
 		return emergency;
+	}
+	
+	public void setEmergency() {
+		emergency = false;
 	}
 	
 	public int getx() {

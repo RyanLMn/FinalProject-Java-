@@ -175,6 +175,14 @@ public class Map {
 		
 	}
 	
+	public void removeEvent() {
+		for (int x=0; x < events.size(); x++) {
+			if (!events.get(x).getEmergency()) {
+				events.remove(x);
+			}
+		}
+	}
+	
 	public void respond() {
 		for(int x=0; x < f.returnFiretrucks().length; x++) {
 			f.returnFiretrucks()[x].Respond();
@@ -186,6 +194,10 @@ public class Map {
 		
 		for (int x=0; x < e.returnAmbs().length; x++) {
 			e.returnAmbs()[x].Respond();
+		}
+		
+		for (int x=0; x<events.size(); x++) {
+			events.get(x).Arrival();
 		}
 	}
 	
