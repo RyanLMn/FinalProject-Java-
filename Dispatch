@@ -23,6 +23,8 @@
 		protected int DestinationY;
 		protected Event event;
 		protected boolean atEvent;
+		protected boolean skipy;
+		protected boolean skipx;
 			
 		public Dispatch(Location l)
 		{
@@ -96,7 +98,7 @@
 						atEvent = false;
 					if(skipx==false)
 					{
-						if(currentlocationX<DestinationX && currentlocationX+2=!DestinationX)
+						if(currentlocationX<DestinationX && currentlocationX+2!=DestinationX)
 						{
 							if(currentlocationX+1!=Map.getBuilding().get(currentlocationY).size() && Map.getBuilding().get(currentlocationY).get(currentlocationX+1) instanceof Roads) //checks for road at it's right
 							
@@ -115,7 +117,7 @@
 							}
 						
 						}
-						else if(currentlocationX>DestinationX && currentlocationX-2=!DestinationX)
+						else if(currentlocationX>DestinationX && currentlocationX-2!=DestinationX)
 						{
 							if(currentlocationX-1!=Map.getBuilding().get(currentlocationY).size() && Map.getBuilding().get(currentlocationY).get(currentlocationX-1) instanceof Roads) //checks for road at it's right
 							
@@ -146,8 +148,8 @@
 							}
 						}
 					}
-					if(skipy=false)
-						if(currentlocationY<DestinationY && currentlocationY+2=!DestinationY)
+					if(skipy==false)
+						if(currentlocationY<DestinationY && currentlocationY+2!=DestinationY)
 						{
 							if(currentlocationX+1!=Map.getBuilding().size() && Map.getBuilding().get(currentlocationY+1).get(currentlocationX)instanceof Roads) //if there is a road above it.
 							{
@@ -164,7 +166,7 @@
 								skipx=false;
 							}
 						}
-						else if(currentlocationY>DestinationY && currentlocationY-2=!DestinationY)
+						else if(currentlocationY>DestinationY && currentlocationY-2!=DestinationY)
 						{
 							if(currentlocationY-1 != -1 && Map.getBuilding().get(currentlocationY-1).get(currentlocationX)instanceof Roads)
 							{
