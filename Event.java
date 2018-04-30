@@ -12,6 +12,8 @@ public class Event {
 	private boolean PoliceArrival;
 	private boolean FiretruckArrival;
 	private boolean AmbulanceArrival;
+	private int counter;
+
 
 	private int locationX;
 	private int locationY;
@@ -43,39 +45,37 @@ public class Event {
 
 	public boolean Arrival()
 	{
-		if(event.equals("Injury"))
-		{
-			return AmbulanceArrival;
+		boolean arrived = false;
+		switch(dispatch) {
+		case 1:
+			arrived = AmbulanceArrival;
+			break;
+		case 2:
+			arrived = FiretruckArrival;
+			break;
+		case 3:
+			arrived = PoliceArrival;
+			break;
+		case 4:
+			arrived = FiretruckArrival && AmbulanceArrival;
+			break;
+		case 5:
+			arrived = PoliceArrival && FiretruckArrival;
+			break;
+		case 6:
+			arrived = AmbulanceArrival && PoliceArrival;
+			break;
+		case 7:
+			arrived = AmbulanceArrival && FiretruckArrival && PoliceArrival;
+			break;
 		}
-		else if(event.equals("Cat Stuck in tree"))
-		{
-			return FiretruckArrival;
+		if (arrived) {
+			counter--;
+			if (counter == 0)
+				emergency = false;
 		}
-		else if(event.equalsCrime("Crime"))
-		{
-			return PoliceArrival;
-		}
-		else if(event.equals("Fire"))
-		{
-			return FiretruckArrival && AmbulanceArrival;
-			
-		}
-		else if(event.equals("Arson"))
-		{
-			return PoliceArrival && FiretruckArrival;
-			
-		}
-		else if(event.equals("Armed Robbery"))
-		{
-			return AmbulanceArrival && PoliceArrival;
-			
-		}
-		else if(event.equals("Accident"))
-		{
-			return AmbulanceArrival && FiretruckArrival && PoliceArrival;
-			
-		}
-			
+		return arrived;
+
 	}
 	public void situation()
 	{
@@ -92,34 +92,40 @@ public class Event {
 			case 1:
 				ambulance=true;
 				event = "Injury";
+				counter = 2;
 				break;
 		
 			case 2: 
 				firetruck=true;
 				event = "Cat Stuck in tree";
+				counter = 1;
 				break;
 		
 			case 3:
 				police=true;
 				event = "Crime";
+				counter = 3;
 				break;
 			
 			case 4:
 				ambulance=true;
 				firetruck=true;
 				event = "Fire";
+				counter = 4;
 				break;
 			
 			case 5:
 				firetruck=true;
 				police=true;
 				event = "Arson";
+				counter = 4;
 				break;
 			
 			case 6:
 				police=true;
 				ambulance=true;
 				event = "Armed Robbery";
+				counter = 5;
 				break;
 			
 			case 7:
@@ -127,6 +133,7 @@ public class Event {
 				ambulance=true;
 				firetruck=true;
 				event = "Accident";
+				counter = 7;
 				break;
 		}
 	}
@@ -145,6 +152,10 @@ public class Event {
 	
 	public boolean getEmergency() {
 		return emergency;
+	}
+	
+	public void setEmergency() {
+		emergency = false;
 	}
 	
 	public int getx() {
