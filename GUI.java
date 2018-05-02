@@ -18,6 +18,7 @@ public class GUI {
 	private static JTextArea events;
 	private GUIMap map;
 	
+	// default constructor
 	public GUI() {
 		events = new JTextArea();
 		events.setEnabled(false);
@@ -28,6 +29,7 @@ public class GUI {
 		makeFrame();
 	}
 	
+	// makes the frame, scroll pane, and sets the layout for the gui
 	public void makeFrame() {
 		frame = new JFrame("EMS System");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,7 +45,7 @@ public class GUI {
 		
 		
 		
-		frame.setPreferredSize(new Dimension(900, 700));
+		frame.setPreferredSize(new Dimension(845, 675));
 		
 		contentPane.add(scrollPane, BorderLayout.WEST);
 		contentPane.add(map, BorderLayout.CENTER);
@@ -52,10 +54,12 @@ public class GUI {
 		frame.setVisible(true);
 	}
 	
+	// updates the map
 	public void update() {
 		frame.repaint();
 	}
 	
+	// adds events to the scroll pane
 	public void addEvent(String event) {
 		String s;
 		StringBuilder x = new StringBuilder();

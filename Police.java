@@ -9,6 +9,7 @@ package EMSSystem;
 public class Police extends Building{
 	private PoliceCar[] policeCars;  //a new array of police cars
 	
+	// passes the location to the building class and makes an array of police cars
 	public Police(Location l, int number) {
 		super(l);
 		policeCars = new PoliceCar[number];
@@ -17,6 +18,7 @@ public class Police extends Building{
 		}
 	}
 	
+	//returns the array of police cars
 	public PoliceCar[] returnPolice() {
 		return policeCars;
 	}

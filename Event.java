@@ -14,11 +14,10 @@ public class Event {
 	private boolean AmbulanceArrival;
 	private int counter;
 
-
 	private int locationX;
 	private int locationY;
 
-	
+	// default constructor that sets variables and calls situation
 	public Event()
 	{
 		
@@ -29,20 +28,26 @@ public class Event {
 		AmbulanceArrival=false;
 	}
 	
+	// set to true when the ppolice car arives at the event
 	public void setPA()
 	{
 		PoliceArrival=true;
 	}
+	
+	// set to true when the firetruck arrives at the event
 	public void setFA()
 	{
 		FiretruckArrival=true;
 	}
+	
+	// set to true when the ambulance arrives at the event
 	public void setAA()
 	{
 		AmbulanceArrival=true;
 		
 	}
-
+	
+	// returns true when all of the emercency vehicles for an event arrive
 	public boolean Arrival()
 	{
 		boolean arrived = false;
@@ -75,8 +80,9 @@ public class Event {
 				emergency = false;
 		}
 		return arrived;
-
 	}
+	
+	// sets the events randomly around the map when called
 	public void situation()
 	{
 	
@@ -138,37 +144,46 @@ public class Event {
 		}
 	}
 	
+	// returns the value of the variable ambulance
 	public boolean getAmbulance() {
 		return ambulance;
 	}
 	
+	
+	// returns the value of the variable firetruck
 	public boolean getFireTruck() {
 		return firetruck;
 	}
 	
+	// returns the value of the variable police
 	public boolean getPolice() {
 		return police;
 	}
 	
+	// returns the emergency value
 	public boolean getEmergency() {
 		return emergency;
 	}
 	
+	// set the emergency value of the event to show when the event ends
 	public void setEmergency() {
 		emergency = false;
 	}
 	
+	// return the x loation of the event
 	public int getx() {
 		return locationX;
 	}
 	
+	// return the y location of the event
 	public int gety() {
 		return locationY;
 	}
 	
+	//return the coordinates of the event
 	public String toString() {
 		String loc;
-		loc = "(" + Integer.toString(locationX) + "," + Integer.toString(locationY) + ")";
+		loc = "(" + Integer.toString(locationX+1) + "," + Integer.toString(locationY+1) + ")";
 		event += " at " + loc + "\n";
 		return event;
 	}
