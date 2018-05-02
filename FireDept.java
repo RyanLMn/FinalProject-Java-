@@ -9,6 +9,7 @@ package EMSSystem;
 public class FireDept extends Building {
 	private firetruck[] Firetrucks;
 	
+	// defult constuctor, gives the location l to the building class
 	public FireDept(Location l, int number) {
 		super(l);
 		Firetrucks = new firetruck[number];
@@ -17,6 +18,7 @@ public class FireDept extends Building {
 		}
 	}
 	
+	// returns the array of firetrucks
 	public firetruck[] returnFiretrucks () {
 		return Firetrucks;
 	}
