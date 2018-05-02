@@ -1,19 +1,19 @@
 package EMSSystem;
+ 
+public class ambulance extends Dispatch{ //extension of Dispatch class for ambulances
 
-public class ambulance extends Dispatch{
+    private int HLocationX; //outdated
+    private int HLocationY; //outdated
 
-    private int HLocationX;
-    private int HLocationY;
-
-    public ambulance(Location l)
+    public ambulance(Location l) //sets home to Hospital
     {
     	super(l);
-        size=1;
+        size=1; //outdated
         
         
         ambulance=true;
         rescue=true;
-
+//boolean statements which are initialized in dispatch class, determines certain variations in the parent code specifically for ambulances.
         
         
             
