@@ -30,20 +30,20 @@ package EMSSystem;
 			active=false; //vehicle is not moving by default
 			homelocationX=l.getRow(); //gets the x value 
 			homelocationY=l.getColumn(); //gets the y value
-			currentlocationX=homelocationX; 
-			currentlocationY=homelocationY;
-			DestinationX=homelocationX;
-			DestinationY=homelocationY;
-			ambulance=false;
-			rescue=false;
-			dropoff=false;
-			HLocationX=Map.getHospitalLoc().getRow();
-			HLocationY=Map.getHospitalLoc().getColumn();
-			homedestination = false;
-			atEvent = false;
+			currentlocationX=homelocationX; //ensures that the starting location for each vehicle is at their respective homes.
+			currentlocationY=homelocationY; //same as above but for y value.
+			DestinationX=homelocationX; //ensures that the current track of destination is their home location until updated otherwise, making it easier for them to return home.
+			DestinationY=homelocationY; //same as above but for y value.
+			ambulance=false; //set false by default 
+			rescue=false; //set false by default
+			dropoff=false; //ambulance, rescue, and drop off are set to false with the exception of ambulance in its subclass as these boolean statements are exlusive for ambulances as they perform additional tasks unique to them.
+			HLocationX=Map.getHospitalLoc().getRow(); //gets the home location of the vehicle from the map.
+			HLocationY=Map.getHospitalLoc().getColumn(); //gets the home location y value of the vehicle from map.
+			homedestination = false; //Only true when they arrive home from another location.
+			atEvent = false; //outdated
 		}
 		
-		public void setEvent(Event event) {
+		public void setEvent(Event event) { //Brings event into vehicle to help interact
 			this.event = event;
 		}
 
@@ -113,9 +113,9 @@ package EMSSystem;
 									currentlocationX=currentlocationX-1; //moves left
 							}
 								
-							else if (currentlocationX+1!=Map.getBuilding().get(currentlocationY).size() && Map.getBuilding().get(currentlocationY).get(currentlocationX +1) instanceof Roads)
+							else if (currentlocationX+1!=Map.getBuilding().get(currentlocationY).size() && Map.getBuilding().get(currentlocationY).get(currentlocationX +1) instanceof Roads) //checks for a road to the right
 							{
-								currentlocationX=currentlocationX+1;
+								currentlocationX=currentlocationX+1; //moves right.
 							}
 						}
 						if(currentlocationY<DestinationY) //if the event is above the vehicle
@@ -148,15 +148,15 @@ package EMSSystem;
 							{
 								if(ambulance == true && dropoff == true) //checks to see if it is an ambulance or not, in which case it wll determine whether to go to hospital or home.
 								{
-										DestinationX=HLocationX;
-										DestinationY=HLocationY;
+										DestinationX=HLocationX; 
+										DestinationY=HLocationY; //sets destination to home
 										dropoff = false;
-										if (this instanceof ambulance) {
+										if (this instanceof ambulance) { //sets destination to hospital for dropping off patients if ambulance.
 											event.setAA();
 											atEvent = true;
 										}
 								}
-								else if (!homedestination)
+								else if (!homedestination) //Ends event.
 								{
 									DestinationX=homelocationX;
 									DestinationY=homelocationY;
