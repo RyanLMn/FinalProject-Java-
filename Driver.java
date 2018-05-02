@@ -26,7 +26,7 @@ public class Driver {
 			if (rngEvent <= 10) {  //chance of an event being created.
 				event = new Event();  //Creates a new event
 				map.setEvent(event);  //Add the new event to the arraylist of events in the map class
-				gui.addEvent(event.toString());
+				gui.addEvent(event.toString()); //Sends the event to the gui class to add it to the scroll pane
 			}
 			try {
 				Thread.sleep(1000);  //time between ticks *REMEMBER 1000 = 1 second

@@ -22,6 +22,7 @@ public class Map {
 	
 	private static ArrayList<Event> events = new ArrayList<>();
 	
+	// Constructor
 	public Map() {
 		buildings = new ArrayList<>();
 		house = new ArrayList<>();
@@ -30,6 +31,7 @@ public class Map {
 		build();
 	}
 	
+	// builds the map by creating the roads, houses, and emergency buildings
 	public void build() {
 		int number = 1;
 		
@@ -84,6 +86,7 @@ public class Map {
 		
 	}
 	
+	// print a text version of the map to the console window, does not show the vehicles
 	public void display() {
 		for (int x=0; x < buildings.size(); x++) {
 			for (int y=0; y < buildings.get(x).size(); y++) {
@@ -106,34 +109,42 @@ public class Map {
 		}
 	}
 	
+	// return the arraylist of arraylist of buildings
 	public static ArrayList<ArrayList<Building>> getBuilding(){
 		return buildings;
 	}
 	
+	// return the arraylist of houses
 	public static ArrayList<House> getHouse(){
 		return house;
 	}
 	
+	// return the arraylist of roads
 	public static ArrayList<Roads> getRoad(){
 		return road;
 	}
 	
+	// returns the location of the EMT building
 	public static Location getETMLoc() {
 		return e.getLocation();
 	}
 	
+	// returns the location of the Fire Dept.
 	public static Location getFireLoc() {
 		return f.getLocation();
 	}
 	
+	// returns the location of the police station
 	public static Location getPoliceLoc() {
 		return p.getLocation();
 	}
 	
+	//returns the location of the hospital
 	public static Location getHospitalLoc() {
 		return h.getLocation();
 	}
 	
+	// adds events to the "events" arraylist and passes the location of the event to available emergency vehicles
 	public void setEvent(Event event) {
 		events.add(event);
 		if (event.getFireTruck()) {
@@ -175,6 +186,7 @@ public class Map {
 		
 	}
 	
+	// removes events from the arraylist once the event has ended
 	public void removeEvent() {
 		for (int x=0; x < events.size(); x++) {
 			if (!events.get(x).getEmergency()) {
@@ -183,6 +195,7 @@ public class Map {
 		}
 	}
 	
+	// makes the emergency vehicles respond to the event
 	public void respond() {
 		for(int x=0; x < f.returnFiretrucks().length; x++) {
 			f.returnFiretrucks()[x].Respond();
@@ -201,18 +214,23 @@ public class Map {
 		}
 	}
 	
+	
+	// returns the arraylist of events
 	public static ArrayList<Event> getEvent() {
 		return events;
 	}
 	
+	//returns the array of ambulances
 	public static ambulance[] getAmbs() {
 		return e.returnAmbs();
 	}
 	
+	//returns the array of fire trucks
 	public static firetruck[] getFTrukcs() {
 		return f.returnFiretrucks();
 	}
 	
+	// returns the array of police cars
 	public static PoliceCar[] getPolicecars() {
 		return p.returnPolice();
 	}
